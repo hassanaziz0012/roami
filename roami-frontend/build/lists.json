@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "title": "Burger Love",
+        "img": "/images/list/list1.png",
+        "location": "Italy"
+    },
+    {
+        "id": 2,
+        "title": "Romantic Spots",
+        "img": "/images/list/list2.png",
+        "location": "Italy"
+    },
+    {
+        "id": 3,
+        "title": "Nightlife",
+        "img": "/images/list/list3.png",
+        "location": "Italy"
+    },
+    {
+        "id": 4,
+        "title": "Free Parking",
+        "img": "/images/list/list4.png",
+        "location": "Italy"
+    },
+    {
+        "id": 5,
+        "title": "Burger Love",
+        "img": "/images/list/list1.png",
+        "location": "Italy"
+    },
+    {
+        "id": 6,
+        "title": "Romantic Spots",
+        "img": "/images/list/list2.png",
+        "location": "Italy"
+    },
+    {
+        "id": 7,
+        "title": "Nightlife",
+        "img": "/images/list/list3.png",
+        "location": "Italy"
+    },
+    {
+        "id": 8,
+        "title": "Free Parking",
+        "img": "/images/list/list4.png",
+        "location": "Italy"
+    }
+]

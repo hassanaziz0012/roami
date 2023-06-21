@@ -1,0 +1,208 @@
+[
+  {
+    "img": "/images/pin/img1.png",
+    "title": "Summer Roadtrips",
+    "location": "Italy",
+    "rating": 4.5,
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [1, 3]
+  },
+  {
+    "img": "/images/pin/img2.png",
+    "title": "Bali Roads",
+    "location": "Seattle",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [2, 3]
+  },
+  {
+    "img": "/images/pin/img3.png",
+    "title": "City Tour",
+    "location": "Berlin",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [3, 2]
+  },
+  {
+    "img": "/images/pin/img4.png",
+    "title": "Roads in Dezember",
+    "location": "Madrid",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [4, 25]
+  },
+  {
+    "img": "/images/pin/img5.png",
+    "title": "Indo Trip",
+    "location": "Moabit",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [5, 20]
+  },
+  {
+    "img": "/images/pin/img6.png",
+    "title": "Coast Line",
+    "location": "Italy",
+    "rating": 4.5,
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [6, 7]
+  },
+  {
+    "img": "/images/pin/img7.png",
+    "title": "Secret Sideroads",
+    "location": "Seattle",
+    "rating": 4.5,
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [7, 11]
+  },
+  {
+    "img": "/images/pin/img8.png",
+    "title": "Safe Camping",
+    "location": "Berlin",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [8, 17, 12]
+  },
+  {
+    "img": "/images/pin/img9.png",
+    "title": "Roadviews",
+    "location": "Madrid",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [9, 24]
+  },
+  {
+    "img": "/images/pin/img10.png",
+    "title": "Ocean Moments",
+    "location": "Moabit",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [10, 17]
+  },
+  {
+    "img": "/images/pin/img11.png",
+    "title": "Night Sky Roads",
+    "location": "Italy",
+    "rating": 4.5,
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [11, 4]
+  },
+  {
+    "img": "/images/pin/img12.png",
+    "title": "Cali  Tour",
+    "location": "Seattle",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [12, 15]
+  },
+  {
+    "img": "/images/pin/img13.png",
+    "title": "Desert Trip",
+    "location": "Berlin",
+    "rating": 4.5,
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [13, 14]
+  },
+  {
+    "img": "/images/pin/img14.png",
+    "title": "Mountain way",
+    "location": "Madrid",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [14, 30]
+  },
+  {
+    "img": "/images/pin/img15.png",
+    "title": "Autumn Roads",
+    "location": "Moabit",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [15, 27]
+  },
+  {
+    "img": "/images/pin/img16.png",
+    "title": "Joshua Tree Spots",
+    "location": "Italy",
+    "rating": 4.5,
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [16, 29]
+  },
+  {
+    "img": "/images/pin/img17.png",
+    "title": "Free Roads",
+    "location": "Seattle",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [17, 21]
+  },
+  {
+    "img": "/images/pin/img18.png",
+    "title": "To Paris",
+    "location": "Berlin",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [18, 16]
+  },
+  {
+    "img": "/images/pin/img19.png",
+    "title": "Island Cruise",
+    "location": "Madrid",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [19, 27]
+  },
+  {
+    "img": "/images/pin/img20.png",
+    "title": "Cinematic Jemen",
+    "location": "Moabit",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [20, 29]
+  },
+  {
+    "img": "/images/pin/img21.png",
+    "title": "Berlin Desert",
+    "location": "Moabit",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [21, 28]
+  },
+  {
+    "img": "/images/pin/img22.png",
+    "title": "Vibrant Views",
+    "location": "Madrid",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [22, 20]
+  },
+  {
+    "img": "/images/pin/img23.png",
+    "title": "Italy for two",
+    "location": "Moabit",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [23, 17, 19]
+  },
+  {
+    "img": "/images/pin/img24.png",
+    "title": "Casper David Roads",
+    "location": "Berlin",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [24, 25, 23]
+  },
+  {
+    "img": "/images/pin/img25.png",
+    "title": "Swiss Ways",
+    "location": "Madrid",
+    "creator": "Magnelia Beltram",
+    "creatorimage": "/images/pin/creator.png",
+    "tags": [25, 12, 11]
+  }
+]
