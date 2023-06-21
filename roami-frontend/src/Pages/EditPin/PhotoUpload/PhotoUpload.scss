@@ -1,0 +1,102 @@
+@import "../../../Common.scss";
+
+#e-photo_upload {
+  padding-bottom: 113px;
+  @include breakpoint(max-lg) {
+    padding-bottom: 74px;
+  }
+  @include breakpoint(max-sm) {
+    padding-bottom: 54px;
+  }
+  .photo_upload_wrapper {
+    max-width: 810px;
+    margin: 0 auto;
+  }
+  h2 {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 60px;
+    color: $black-color;
+
+    @include breakpoint(max-sm) {
+      font-size: 21px;
+      line-height: 32px;
+    }
+  }
+  p {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    padding-bottom: 16px;
+    color: #000000;
+  }
+
+  .photos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 31px 30px;
+    padding-bottom: 48px;
+
+    @include breakpoint(max-md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include breakpoint(max-sm) {
+      gap: 21px 20px;
+      padding-bottom: 31px;
+    }
+  }
+
+  .btn_group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    button {
+      border-radius: 100px;
+      padding: 10px 40px;
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 27px;
+      text-align: center;
+      color: $white-color;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      border: none;
+      @include breakpoint(max-sm) {
+        padding: 8px 25px;
+        font-size: 12px;
+        line-height: 18px;
+      }
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+    .publish_preview_btn {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      @include breakpoint(max-sm) {
+        justify-content: center;
+        gap: 10px;
+      }
+  
+      .preview_btn {
+        background: #000000;
+      }
+      .publish_btn {
+        background: #095dda;
+        border-radius: 100px;
+      }
+    }
+    .delete_btn {
+      background-color: red;
+    }
+  }
+  
+}

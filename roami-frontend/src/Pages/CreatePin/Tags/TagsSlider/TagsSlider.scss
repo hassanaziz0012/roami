@@ -1,0 +1,219 @@
+@import "../../../../Common.scss";
+
+#pin_tag {
+  padding-top: 40px;
+
+  button {
+    background-color: transparent;
+    border: none;
+  }
+
+  .container {
+    max-width: 810px !important;
+    padding: 0px !important;
+    position: relative;
+    @include breakpoint(max-xl) {
+      padding: 0 28px !important;
+    }
+    a {
+      text-decoration: none;
+    }
+
+    button {
+      margin-bottom: 10px;
+      border-bottom: 2px solid transparent;
+    }
+    button.selected {
+      border-bottom: 2px solid #095dda;
+    }
+
+    .tag_item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      // margin-bottom: 20px;
+
+      .img_wrapper {
+        margin: 0 auto;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      span {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 275;
+        font-size: 12px;
+        line-height: 18px;
+        text-align: center;
+        color: #000000;
+        white-space: nowrap;
+
+        @media all and (max-width: 400px) {
+          font-size: 10.3686px;
+          line-height: 16px;
+        }
+      }
+    }
+  }
+  .slick-prev .icon,
+  .slick-next .icon {
+    width: 42px !important;
+    height: 42px !important;
+    border: 1px solid #ffffff;
+    border-radius: 100%;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.25);
+    @include breakpoint(max-sm) {
+      width: 21px !important;
+      height: 21px !important;
+    }
+    img {
+      z-index: 1000;
+      @include breakpoint(max-sm) {
+        width: 21px !important;
+        height: 21px !important;
+      }
+    }
+  }
+
+  .img_shadow {
+    position: absolute;
+    z-index: 2;
+    width: 200px;
+    height: 180px;
+    top: 0;
+    left: 20px;
+    display: none !important;
+    @include breakpoint(max-sm) {
+      display: none !important;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      @include breakpoint(max-sm) {
+        display: none !important;
+      }
+    }
+  }
+
+  .slick-slider {
+    padding: 0 40px !important;
+    @include breakpoint(max-sm) {
+      padding: 0px !important;
+    }
+  }
+
+  .slick-prev:before,
+  .slick-next:before {
+    content: "" !important;
+  }
+  .slick-dots {
+    display: none !important;
+  }
+
+  .slide {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: column !important;
+    margin: 0 !important;
+
+    p {
+      font-weight: 275;
+      font-size: 12px;
+      line-height: 18px;
+      text-align: center;
+      color: $black-color;
+    }
+  }
+
+  
+.slick-arrow.slick-disabled{
+  display: none !important;
+}
+
+  .slick-arrow {
+    .left_arrow_icon_disabled {
+      display: none;
+    }
+
+    .right_arrow_icon_disabled {
+      display: none;
+    }
+  }
+
+  .slick-arrow.slick-next {
+    .shape_image {
+      position: absolute;
+      z-index: -100;
+      top: -65px;
+      right: 0px;
+      width: 200px;
+      height: 150px;
+
+      @include breakpoint(max-xl) {
+        width: 130px;
+        height: 130px;
+        top: -50px;
+      }
+      @include breakpoint(max-sm) {
+        display: none;
+      }
+      .shape {
+        width: 100% !important;
+        height: 100% !important;
+      }
+    }
+  }
+  .slick-arrow.slick-prev {
+    z-index: 5;
+    .shape_image {
+      display: none;
+
+      @include breakpoint(max-xl) {
+        width: 130px;
+        height: 130px;
+        top: -50px;
+      }
+      .shape {
+        width: 100% !important;
+        height: 100% !important;
+      }
+    }
+  }
+
+  .slick-arrow.slick-prev.slick-disabled {
+    @include breakpoint(max-sm) {
+      display: none !important;
+    }
+
+    .shape_image {
+      display: none;
+    }
+    .left_arrow_icon_active {
+      display: none;
+    }
+    .left_arrow_icon_disabled {
+      display: block;
+    }
+  }
+  .slick-arrow.slick-next.slick-disabled {
+    @include breakpoint(max-sm) {
+      display: none !important;
+    }
+    .shape_image {
+      display: none;
+    }
+    .right_arrow_icon_active {
+      display: none;
+    }
+    .right_arrow_icon_disabled {
+      display: block;
+    }
+  }
+}

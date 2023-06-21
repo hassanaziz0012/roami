@@ -1,0 +1,151 @@
+@import "../../../../Common.scss";
+
+#followed_list_card {
+  position: relative;
+  .list_image {
+    margin-top: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      z-index: -11;
+      transform: scale(1.02);
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+  .rating_title {
+    margin-top: 13px;
+    margin-bottom: 6px;
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      span {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 300;
+        font-size: 10.6667px;
+        line-height: 16px;
+        color: #000000;
+      }
+    }
+  }
+  h5 {
+    @extend .poppins_font;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    color: $black-color;
+
+    &:hover {
+      opacity: 80%;
+    }
+  }
+  h6 {
+    @extend .poppins_font;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    color: $black-color;
+    margin-top: 14px;
+  }
+
+  span {
+    @extend .poppins_font;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 27px;
+    color: $black-color;
+    display: flex;
+    align-items: center;
+    img {
+      margin-left: 17px;
+      width: 15px;
+    }
+  }
+  #rate {
+    display: flex;
+    align-items: center;
+  }
+  .love_btn {
+    z-index: 2;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    transition: all ease-in-out 0.3s;
+  }
+
+  #rate {
+    span {
+      margin-right: 8px;
+    }
+  }
+
+  textarea {
+    max-width: 100%;
+    height: 132px;
+    border: 1px solid $black-color;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 6px;
+  }
+  .btn_group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 9px;
+    button {
+      @extend .poppins_font;
+      border-radius: 100px;
+      font-size: 12px;
+      line-height: 18px;
+      padding: 3px 10px;
+      width: 65px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .close_btn {
+      background: #095dda;
+      color: $white-color;
+      border: 1px solid #095dda;
+      &:hover {
+        color: #095dda;
+        background: $white-color;
+      }
+    }
+    .publish_btn {
+      background: $black-color;
+      color: $white-color;
+      border: 1px solid $black-color;
+      &:hover {
+        color: $black-color;
+        background: $white-color;
+      }
+    }
+  }
+
+  .rate_review-text {
+    @extend .poppins_font;
+    position: relative;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    cursor: pointer;
+    color: $black-color;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 124px;
+      height: 1px;
+      background-color: $black-color;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}

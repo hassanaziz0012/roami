@@ -1,0 +1,84 @@
+@import "../../../Common.scss";
+
+#pin_tags {
+  .pin_tags_contents {
+    max-width: 810px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+
+    h2 {
+      @extend .poppins_font;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 60px;
+      color: $black-color;
+
+      @include breakpoint(max-sm) {
+        font-size: 21px;
+        line-height: 32px;
+      }
+    }
+
+    .selected_btn {
+      @extend .poppins_font;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 18px;
+      text-align: center;
+      padding: 7px 15px;
+      color: $white-color;
+      background: $black-color;
+      border-radius: 68.4211px;
+      border: none;
+    }
+
+    .pin_top {
+      gap: 25px;
+    }
+
+    // .all_tags {
+    //   max-width: 720px;
+    //   margin: 0 auto;
+    //   display: flex;
+    //   align-items: center;
+    //   flex-wrap: wrap;
+    //   gap: 30px;
+    //   padding-top: 38px;
+    //   padding-bottom: 29px;
+
+    //   @media all and (max-width: 375px) {
+    //     display: grid;
+    //     grid-template-columns: repeat(3, 1fr);
+    //     gap: 30px 10px;
+    //   }
+
+    //   .tag_item {
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+    //     gap: 4px;
+    //     cursor: pointer;
+    //     border: none;
+    //     background-color: transparent;
+    //     border-bottom: 2px solid transparent;
+    //     .img_wrapper {
+    //       width: 28px;
+    //       height: 28px;
+    //     }
+
+    //     span {
+    //       @extend .poppins_font;
+    //       font-weight: 275;
+    //       font-size: 12px;
+    //       line-height: 18px;
+    //       text-align: center;
+    //       color: $black-color;
+    //     }
+    //   }
+
+    //   .selected {
+    //     border-bottom: 2px solid #095dda;
+    //   }
+    // }
+  }
+}

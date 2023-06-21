@@ -1,0 +1,53 @@
+@import "../../../Common.scss";
+
+#pins {
+  padding-top: 53px;
+  padding-bottom: 87px;
+
+  @include breakpoint(max-sm) {
+    padding-top: 10px;
+    padding-bottom: 17px;
+  }
+  .container {
+    @include breakpoint(max-sm) {
+        padding: 0 15px;
+        padding-top: 10px;
+        padding-bottom: 17px;
+      }
+  }
+
+  .no_found_text{
+    @extend .poppins_font;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .pins-wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 53px 20px;
+
+    @include breakpoint(max-xl) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include breakpoint(max-lg) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 33px 20px;
+    }
+
+    @include breakpoint(max-md) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px 20px;
+    }
+    @include breakpoint(max-sm) {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 23px 20px;
+      padding: 15px;
+    }
+  }
+
+  .pins-wrapper_blur {
+    background: rgba(255, 255, 255, 0.29);
+    filter: blur(20px);
+  }
+}

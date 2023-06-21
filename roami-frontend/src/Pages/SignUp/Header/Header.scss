@@ -1,0 +1,15 @@
+@import "../../../Common.scss";
+
+#header_logo {
+  padding-bottom: 24px;
+  border-bottom: 1px solid #ededed;
+  @include breakpoint(max-lg) {
+    padding-bottom: 14px;
+  }
+  img{
+    @include breakpoint(max-sm) {
+       width: 80px;
+       padding-bottom: 14px;
+      }
+  }
+}

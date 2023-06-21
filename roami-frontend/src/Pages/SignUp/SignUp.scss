@@ -1,0 +1,15 @@
+@import "../../Common.scss";
+
+#sign_up {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 150px;
+  @include breakpoint(max-xxl) {
+    gap: 100px;
+  }
+  @include breakpoint(max-lg) {
+    gap: 50px;
+  }
+}

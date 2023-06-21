@@ -1,0 +1,122 @@
+@import "../../../Common.scss";
+
+#search_bar {
+  position: relative;
+  .search_bar {
+    background: #ffffff;
+    box-shadow: 0px 3.23851px 32.3851px rgba(0, 0, 0, 0.05);
+    border-radius: 80.9628px;
+    height: 41px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3px;
+    width: 370px;
+
+    @include breakpoint(max-lg) {
+      width: 270px;
+      height: 31px;
+    }
+
+    @include breakpoint(max-md) {
+      width: 220px;
+      height: 31px;
+    }
+    @include breakpoint(max-sm) {
+      width: 100%;
+      height: 31px;
+    }
+
+    input {
+      @extend .poppins_font;
+      border: none;
+      outline: none;
+      padding: 0 23px;
+      font-weight: 275;
+      font-size: 14px;
+      line-height: 21px;
+      color: $black-color;
+      @include breakpoint(max-lg) {
+        padding: 0 13px;
+        font-size: 16px;
+        line-height: 22px;
+      }
+      @include breakpoint(max-md) {
+        width: 170px;
+        padding: 10px 10px;
+      }
+    }
+    .search_btn {
+      background: #095dda;
+      border-radius: 80.9628px;
+      border: none;
+      width: 48.58px;
+      padding: 0;
+      height: 34.81px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include breakpoint(max-lg) {
+        width: 45px;
+        height: 33px;
+      }
+      @include breakpoint(max-md) {
+        width: 35px;
+        height: 25px;
+      }
+      img {
+        width: 25.91px;
+        @include breakpoint(max-md) {
+          height: 18px;
+          // width: 15px;
+        }
+      }
+    }
+  }
+
+  .suggestion {
+    position: absolute;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.05);
+    top: 70px;
+    left: 0;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+    min-width: 250px;
+    max-height: 200px;
+    overflow-y: scroll;
+    margin: 0 auto;
+    @include breakpoint(max-lg) {
+      top: 40px;
+    }
+    .suggestion_contents_wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 15px;
+      padding: 0;
+      margin: 0;
+      span {
+        @extend .poppins_font;
+        font-size: 18px;
+        line-height: 27px;
+        color: $black-color;
+        cursor: pointer;
+        @include breakpoint(max-lg) {
+          font-size: 16px;
+          line-height: 22px;
+        }
+        span {
+          font-size: 14px;
+          line-height: 22px;
+          @include breakpoint(max-lg) {
+            font-size: 12px;
+            line-height: 18px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+@import "../../../../Common.scss";
+
+#img_slider {
+  width: 100%;
+  .carousel_img {
+    filter: drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.15)) !important;
+    border-radius: 10px 10px 0px 0px !important;
+    width: 100%;
+  }
+
+  .carousel {
+    width: 100% !important;
+  }
+
+  .carousel-indicators {
+    @include breakpoint(max-sm) {
+      display: none;
+    }
+    button {
+      width: 10px !important;
+      height: 3px !important;
+      background-color: #75706c !important;
+      box-shadow: 0px 8px 80px rgba(0, 0, 0, 0.4) !important;
+      border-radius: 10px !important;
+      border: none;
+      margin: 0 5px;
+    }
+    button.active {
+      width: 192px !important;
+      background-color: #75706c !important;
+    }
+
+    button.active + button {
+      width: 26px !important;
+    }
+    button.previous-active {
+      width: 26px !important;
+    }
+  }
+
+  .custom-prev-btn,
+  .custom-next-btn {
+    border: none;
+    background-color: transparent;
+    img {
+      @include breakpoint(max-sm) {
+        width: 16.57px;
+        height: 16.57px;
+      }
+    }
+  }
+
+  .carousel-caption {
+    top: 30px !important;
+    left: 40px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    width: 100% !important;
+  }
+  .slider_top {
+    top: 29px;
+    padding: 0 40px !important;
+    position: absolute;
+    z-index: 1015;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    justify-content: space-between;
+    width: 100%;
+
+    @include breakpoint(max-sm) {
+      top: 12px;
+      padding: 0 12px !important;
+    }
+
+    .pin_creator_img_name {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+    img {
+      @include breakpoint(max-sm) {
+        width: 17.95px;
+        height: 17.95px;
+      }
+    }
+    button {
+      background-color: transparent;
+      border: none;
+      width: 48px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+    }
+    span {
+      @extend .poppins_font;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 27px;
+      text-align: center;
+      letter-spacing: 0.04em;
+      color: $white-color;
+
+      @include breakpoint(max-sm) {
+        display: none;
+      }
+    }
+  }
+}

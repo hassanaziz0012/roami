@@ -1,0 +1,87 @@
+@import "../../../Common.scss";
+
+#navbar {
+  border: 1px solid #ededed;
+  position: sticky;
+  @include breakpoint(max-sm) {
+    border: none;
+  }
+
+  .nav_contents {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 27px;
+    padding-top: 14px;
+    @include breakpoint(max-lg) {
+      padding-bottom: 24px;
+      padding-top: 14px;
+    }
+    @include breakpoint(max-sm) {
+      display: none;
+    }
+
+    .logo {
+      img {
+        @include breakpoint(max-lg) {
+          max-width: 80px;
+        }
+        @include breakpoint(max-sm) {
+          max-width: 60px;
+        }
+      }
+    }
+
+    .nav_right_contents {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 184px;
+      @include breakpoint(max-xl) {
+        gap: 120px;
+      }
+      @include breakpoint(max-lg) {
+        gap: 100px;
+      }
+      @include breakpoint(max-md) {
+        gap: 20px;
+      }
+
+      ul {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        margin: 0;
+        padding: 0;
+        @include breakpoint(max-lg) {
+          gap: 15px;
+        }
+        @include breakpoint(max-md) {
+          gap: 10px;
+        }
+        li {
+          .nav_item {
+            @extend .poppins_font;
+            font-weight: 800;
+            font-size: 11.7893px;
+            line-height: 18px;
+            text-decoration: none;
+            color: $black-color;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            @media all and (max-width: 600px) {
+              font-size: 10.7893px;
+              line-height: 16px;
+            }
+            img {
+              width: 16px;
+              height: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

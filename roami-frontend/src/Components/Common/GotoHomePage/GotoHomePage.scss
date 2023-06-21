@@ -1,0 +1,23 @@
+@import "../../../Common.scss";
+
+
+#back_home_link {
+    padding-top: 17px;
+    padding-bottom: 15px;
+    padding-left: 22px;
+    @include breakpoint(sm) {
+      display: none;
+    }
+    a {
+      background: #ffffff;
+      border: 1px solid #ffffff;
+      box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100%;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+  }

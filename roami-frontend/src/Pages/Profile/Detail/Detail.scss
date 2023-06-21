@@ -1,0 +1,526 @@
+@import "../../../Common.scss";
+
+#profile {
+  padding-top: 117px;
+  padding-bottom: 89px;
+  @include breakpoint(max-lg) {
+    padding-top: 87px;
+    padding-bottom: 49px;
+  }
+  @include breakpoint(max-sm) {
+    padding-top: 15px;
+    padding-bottom: 34px;
+  }
+
+  button.edit_btn {
+    background: #f3f3f3;
+    border-radius: 5.21008px;
+    width: 62px;
+    height: 50.02px;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 35px;
+    right: 18px;
+    @include breakpoint(max-lg) {
+      width: 49.23px;
+      height: 33.58px;
+      bottom: 20px;
+      right: 21px;
+    }
+    @include breakpoint(max-sm) {
+      width: 29.23px;
+      height: 23.58px;
+      bottom: 20px;
+      right: 21px;
+    }
+    img {
+      width: 16px;
+      @include breakpoint(max-lg) {
+        width: 13px;
+      }
+      @include breakpoint(max-sm) {
+        width: 10px;
+      }
+    }
+  }
+
+  .profile_contents {
+    max-width: 1241px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 632px 597px;
+    gap: 12px;
+    @include breakpoint(max-xxl) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include breakpoint(max-md) {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 30px;
+    }
+
+    .item {
+      background: #ffffff;
+      box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.05);
+      border-radius: 10px;
+      position: relative;
+    }
+  }
+
+  .edit_mode_style {
+    border: 1px solid black !important;
+  }
+
+  .left {
+    padding: 56px 40px 57px 40px;
+    @include breakpoint(max-sm) {
+      padding: 46px 20px 33px 20px;
+    }
+
+    .img_wrapper {
+      margin: 0 auto;
+      position: relative;
+
+      .img_edit {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+      }
+    }
+
+    .circle_img {
+      width: 350px;
+      height: 350px;
+      border-radius: 100%;
+      display: block;
+      margin: 0 auto;
+      width: 350px;
+      height: 350px;
+      @include breakpoint(max-lg) {
+        width: 300px;
+        height: 300px;
+      }
+      @include breakpoint(max-sm) {
+        width: 165.03px;
+        height: 165.03px;
+      }
+    }
+
+    .opacity_low {
+      opacity: 0.5;
+    }
+    input {
+      width: 100%;
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 53.7353px;
+      line-height: 81px;
+      color: #000000;
+      text-align: center;
+      margin-top: 31px;
+      margin-bottom: 38px;
+      border-radius: 5px;
+      outline: none;
+      border: 1px solid transparent;
+      @include breakpoint(max-lg) {
+        font-size: 36.7353px;
+        line-height: 48px;
+      }
+      @include breakpoint(max-sm) {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 32.8466px;
+        line-height: 49px;
+      }
+    }
+    h2 {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 39.2848px;
+      line-height: 59px;
+      leading-trim: both;
+      text-edge: cap;
+      color: #000000;
+      @include breakpoint(max-lg) {
+        font-size: 29.2848px;
+        line-height: 36px;
+      }
+      @include breakpoint(max-sm) {
+        font-size: 22.3496px;
+        line-height: 34px;
+      }
+    }
+    span {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 300;
+      font-size: 7.65541px;
+      line-height: 10px;
+      color: #000000;
+      display: block;
+      text-align: center;
+    }
+
+    .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        @include breakpoint(max-lg) {
+          font-size: 36.7353px;
+          line-height: 48px;
+        }
+        @include breakpoint(max-sm) {
+          width: 19.74px;
+          height: 19.74px;
+        }
+      }
+    }
+
+    .follow_btn {
+      position: absolute;
+      top: 17px;
+      right: 18px;
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 27px;
+      text-align: center;
+      color: #ffffff;
+      background: #095dda;
+      border-radius: 100px;
+      padding: 2.5px 14.5px;
+      border: 1px solid #095dda;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      &:hover {
+        background: #ffffff;
+        color: #095dda;
+      }
+
+      @include breakpoint(max-lg) {
+        font-size: 16px;
+        line-height: 22px;
+      }
+      @include breakpoint(max-sm) {
+        padding: 2.5px 10.5px;
+        font-size: 14px;
+        line-height: 18px;
+      }
+    }
+  }
+
+  .right {
+    padding: 48px 58px 36px 58px;
+
+    @include breakpoint(max-xl) {
+      padding: 48px 28px 36px 28px;
+    }
+    @include breakpoint(max-xl) {
+      padding: 15px 21px 21px 17px;
+    }
+    h1 {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 35px;
+      line-height: 52px;
+      color: #000000;
+      padding-bottom: 18px;
+      @include breakpoint(max-sm) {
+        padding-bottom: 5px;
+        font-size: 24px;
+        line-height: 36px;
+      }
+    }
+
+    textarea {
+      width: 100%;
+    }
+    input,
+    label,
+    textarea {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 25px;
+      color: #000000;
+      border-radius: 5px;
+      outline: none;
+      border: 1px solid transparent;
+      background-color: transparent;
+      @include breakpoint(max-xl) {
+        font-size: 16px;
+        line-height: 22px;
+      }
+      @include breakpoint(max-sm) {
+        font-size: 14px;
+        line-height: 19px;
+      }
+    }
+    h6 {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 800;
+      font-size: 18px;
+      line-height: 25px;
+      color: #000000;
+      padding-bottom: 10px;
+      padding-top: 29px;
+      @include breakpoint(max-xl) {
+        padding-bottom: 10px;
+        padding-top: 19px;
+      }
+      @include breakpoint(max-sm) {
+        font-size: 12px;
+        line-height: 16px;
+        padding-bottom: 9px;
+        padding-top: 22px;
+      }
+    }
+
+    //drop_down
+    .drop_down {
+      position: relative;
+      .drop_down_item {
+        z-index: 10;
+        position: absolute;
+        background-color: white;
+        box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.05);
+        border-radius: 5px;
+        width: 200px;
+        max-height: 250px;
+        overflow-y: scroll;
+        padding: 10px 15px 15px 15px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(0, 0, 0, 0.196);
+
+        li,
+        label,
+        input {
+          cursor: pointer;
+        }
+        li {
+          margin: 5px;
+        }
+
+        .btn_group {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+        button {
+          font-family: "Open Sans";
+          font-style: normal;
+          border-radius: 5px;
+          padding: 3px;
+          margin-top: 15px;
+        }
+
+        button.add_btn {
+          background-color: black;
+          color: white;
+          border: 1px solid black;
+          &:hover {
+            color: black;
+            background-color: white;
+          }
+        }
+        button.delete_btn {
+          background-color: white;
+          color: black;
+          border: 1px solid black;
+          &:hover {
+            color: white;
+            background-color: black;
+          }
+        }
+      }
+    }
+
+    .contact_group {
+      padding-top: 31px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      @include breakpoint(max-xl) {
+        gap: 10px;
+      }
+      @include breakpoint(max-sm) {
+        gap: 17px;
+      }
+      .contact_item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        @include breakpoint(max-sm) {
+          gap: 7px;
+        }
+
+        .img_wrapper {
+          width: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+
+    // donation
+    .donation {
+      position: relative;
+      .paypal_btn {
+        @extend .poppins_font;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 27px;
+        color: #27346a;
+        padding: 4px 30px;
+        background: #f0be42;
+        border-radius: 84.1584px;
+        border: none;
+        display: flex;
+        align-items: center;
+        @include breakpoint(max-xl) {
+          padding: 4px 20px;
+        }
+        @include breakpoint(max-lg) {
+          font-size: 16px;
+          line-height: 22px;
+          padding: 4px 15px;
+        }
+        span {
+          color: #2790c3;
+        }
+      }
+    }
+
+    // social_media_group
+    .social_media_group {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      @include breakpoint(max-lg) {
+        gap: 10px;
+      }
+      img {
+        @include breakpoint(max-lg) {
+          max-width: 44px;
+        }
+        @include breakpoint(max-sm) {
+          max-width: 32px;
+        }
+      }
+
+      button {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        padding: 0;
+      }
+    }
+
+    .media_common {
+      z-index: 10;
+      position: absolute;
+      border: 1px solid rgba(0, 0, 0, 0.506);
+      width: 250px;
+      // height: 100px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: white;
+      bottom: 80px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+
+      @include breakpoint(max-lg) {
+        bottom: 40px;
+      }
+
+      @include breakpoint(max-sm) {
+        width: 200px;
+        padding: 10px;
+        bottom: 40px;
+      }
+      label {
+        @extend .poppins_font;
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 10px;
+        @include breakpoint(max-sm) {
+          font-size: 14px;
+        }
+      }
+      input {
+        @extend .poppins_font;
+        width: 100%;
+        border-radius: 5px;
+        padding: 10px 15px;
+        border: 1px solid rgba(0, 0, 0, 0.629);
+        @include breakpoint(max-sm) {
+          padding: 5px 10px;
+          font-size: 14px;
+        }
+      }
+
+      .btn_group {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      button {
+        @extend .poppins_font;
+        font-weight: 500;
+        border: 1px solid black;
+        width: 100%;
+        background-color: #000000;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 30px;
+        margin-top: 20px;
+        @include breakpoint(max-sm) {
+          margin-top: 10px;
+          padding: 5px 10px;
+          font-size: 14px;
+        }
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+
+  .joined_text {
+    @extend .open_sans_font;
+    position: absolute;
+    right: 28px;
+    top: 21px;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: $black-color;
+    @include breakpoint(max-sm) {
+      right: 20px;
+      top: 17px;
+    }
+  }
+}

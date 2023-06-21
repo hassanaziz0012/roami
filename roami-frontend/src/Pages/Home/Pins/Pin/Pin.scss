@@ -1,0 +1,107 @@
+@import "../../../../Common.scss";
+
+#pin {
+  width: 100%;
+  a {
+    text-decoration: none;
+  }
+  h5 {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    color: $black-color;
+    padding-top: 19px;
+    padding-bottom: 7px;
+    &:hover {
+      opacity: 80%;
+    }
+  }
+  span {
+    a {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 27px;
+      color: $black-color;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+  .pin_image_wrapper {
+    position: relative;
+
+    .pin_img {
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        z-index: -11;
+        transform: scale(1.02);
+      }
+    }
+
+    .heart_icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+    .rating_wrapper {
+      position: absolute;
+      bottom: -17px;
+      right: 5px;
+    }
+    .rating {
+      display: flex;
+      align-items: center;
+      margin-top: 7px;
+      justify-content: flex-end;
+      gap: 5px;
+      span {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 300;
+        font-size: 10.6667px;
+        line-height: 11px;
+        text-align: center;
+        color: $black-color;
+      }
+    }
+  }
+
+  .creator_detail {
+    position: absolute;
+    bottom: 11px;
+    left: 11px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    cursor: pointer;
+    .creator_name {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  .show-creator_detail {
+    display: block;
+  }
+  .close-creator_detail {
+    display: none;
+  }
+  .location_icon {
+    width: 15px;
+    height: 15px;
+  }
+}

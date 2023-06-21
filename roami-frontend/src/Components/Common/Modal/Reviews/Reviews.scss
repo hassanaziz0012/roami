@@ -1,0 +1,89 @@
+@import "../../../../Common.scss";
+
+#reviews {
+   
+  background: #f8f8f8;
+  padding: 28px 60px 28px 35px;
+  @include breakpoint(max-lg) {
+    padding: 28px 40px 28px 40px;
+  }
+  @include breakpoint(max-md) {
+    padding: 28px 30px 28px 31px;
+  }
+  @include breakpoint(max-sm) {
+    padding: 18px 30px 18px 30px;
+  }
+  @media all and (max-width: 400px) {
+    padding: 6px 10px 6px 16px;
+  }
+  h2 {
+    @extend .poppins_font;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 52px;
+    letter-spacing: 0.04em;
+    color: $black-color;
+    padding-bottom: 40px;
+    @include breakpoint(max-md) {
+      font-size: 28px;
+      line-height: 36px;
+      padding-bottom: 20px;
+    }
+    @include breakpoint(max-sm) {
+      padding-bottom: 10px;
+      font-size: 16.5337px;
+      line-height: 25px;
+    }
+   
+  }
+  h3 {
+    @extend .poppins_font;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0.04em;
+    color: $black-color;
+    @include breakpoint(max-sm) {
+      font-size: 12px;
+      line-height: 18px;
+    }
+  }
+  .top {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    @include breakpoint(max-sm) {
+      gap: 11px;
+    }
+  }
+  button.show-reviews_btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    border: none;
+    background: $black-color;
+    border: 1.06667px solid $black-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include breakpoint(max-sm) {
+      width: 25px;
+      height: 25px;
+    }
+
+    img {
+      @include breakpoint(max-sm) {
+        width: 15.31px;
+      }
+    }
+  }
+
+  .bottom {
+    padding-top: 31px;
+    padding-bottom: 7px;
+  }
+
+  .arrow_rotate{
+    transform: rotate(180deg);
+  }
+}

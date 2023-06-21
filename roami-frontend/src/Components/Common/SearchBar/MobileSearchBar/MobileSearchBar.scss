@@ -1,0 +1,45 @@
+@import "../../../../Common.scss";
+
+#mobile_search_bar {
+  padding: 23px 20px;
+  @include breakpoint(sm) {
+    display: none;
+  }
+  .search_bar {
+    background: transparent;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.05);
+    border-radius: 100px;
+    max-width: 457px;
+    margin: 0 auto;
+    height: 31px;
+    padding: 7px 3px 5px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    input {
+      @extend .poppins_font;
+      border: none;
+      outline: none;
+      font-weight: 275;
+      font-size: 16px;
+      line-height: 18px;
+      color: $black-color;
+      width: 100%;
+    }
+    .search_btn {
+      background: #095dda;
+      border-radius: 100px;
+      border: none;
+      width: 50.76px;
+      height: 30.35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 19.61px;
+        height: 19.61px;
+      }
+    }
+  }
+}

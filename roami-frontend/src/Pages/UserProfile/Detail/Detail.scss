@@ -1,0 +1,309 @@
+@import "../../../Common.scss";
+
+#user_profile {
+  padding-top: 117px;
+  padding-bottom: 89px;
+  @include breakpoint(max-lg) {
+    padding-top: 87px;
+    padding-bottom: 49px;
+  }
+  @include breakpoint(max-sm) {
+    padding-top: 15px;
+    padding-bottom: 34px;
+  }
+  .profile_contents {
+    max-width: 1241px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 632px 597px;
+    gap: 12px;
+    @include breakpoint(max-xxl) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include breakpoint(max-md) {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 30px;
+    }
+
+    .item {
+      background: #ffffff;
+      box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.05);
+      border-radius: 10px;
+      position: relative;
+    }
+  }
+  .left {
+    padding: 56px 20px 57px 20px;
+    @include breakpoint(max-sm) {
+      padding: 46px 20px 33px 20px;
+    }
+    .circle_img {
+      border-radius: 100%;
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      width: 350px;
+      height: 350px;
+      @include breakpoint(max-lg) {
+        width: 300px;
+        height: 300px;
+      }
+      @include breakpoint(max-sm) {
+        width: 165.03px;
+        height: 165.03px;
+      }
+    }
+    h1 {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 53.7353px;
+      line-height: 81px;
+      color: #000000;
+      text-align: center;
+      margin-top: 31px;
+      margin-bottom: 38px;
+      @include breakpoint(max-lg) {
+        font-size: 36.7353px;
+        line-height: 48px;
+      }
+      @include breakpoint(max-sm) {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 32.8466px;
+        line-height: 49px;
+      }
+    }
+    h2 {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 39.2848px;
+      line-height: 59px;
+      leading-trim: both;
+      text-edge: cap;
+      color: #000000;
+      @include breakpoint(max-lg) {
+        font-size: 29.2848px;
+        line-height: 36px;
+      }
+      @include breakpoint(max-sm) {
+        font-size: 22.3496px;
+        line-height: 34px;
+      }
+    }
+    span {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 300;
+      font-size: 7.65541px;
+      line-height: 10px;
+      color: #000000;
+      display: block;
+      text-align: center;
+    }
+
+    .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        @include breakpoint(max-lg) {
+          font-size: 36.7353px;
+          line-height: 48px;
+        }
+        @include breakpoint(max-sm) {
+          width: 19.74px;
+          height: 19.74px;
+        }
+      }
+    }
+
+    .follow_btn {
+      position: absolute;
+      top: 17px;
+      right: 18px;
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 27px;
+      text-align: center;
+      color: #ffffff;
+      background: #095dda;
+      border-radius: 100px;
+      padding: 2.5px 14.5px;
+      border: 1px solid #095dda;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      &:hover {
+        background: #ffffff;
+        color: #095dda;
+      }
+
+      @include breakpoint(max-lg) {
+        font-size: 16px;
+        line-height: 22px;
+      }
+      @include breakpoint(max-sm) {
+        top: 10px;
+      right: 13px;
+        padding: 3px 9px;
+        font-size: 12px;
+        line-height: 18px;
+      }
+    }
+  }
+
+  .right {
+    padding: 48px 58px 36px 58px;
+
+    @include breakpoint(max-xl) {
+      padding: 48px 28px 36px 28px;
+    }
+    @include breakpoint(max-xl) {
+      padding: 15px 21px 21px 17px;
+    }
+    h1 {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 35px;
+      line-height: 52px;
+      color: #000000;
+      padding-bottom: 18px;
+      @include breakpoint(max-sm) {
+        padding-bottom: 5px;
+        font-size: 24px;
+        line-height: 36px;
+      }
+    }
+    p {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 25px;
+      color: #000000;
+      @include breakpoint(max-xl) {
+        font-size: 16px;
+        line-height: 22px;
+      }
+      @include breakpoint(max-sm) {
+        font-size: 14px;
+        line-height: 19px;
+      }
+    }
+    h6 {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 800;
+      font-size: 18px;
+      line-height: 25px;
+      color: #000000;
+      padding-bottom: 10px;
+      padding-top: 29px;
+      @include breakpoint(max-xl) {
+        padding-bottom: 10px;
+        padding-top: 19px;
+      }
+      @include breakpoint(max-sm) {
+        font-size: 12px;
+        line-height: 16px;
+        padding-bottom: 9px;
+        padding-top: 22px;
+      }
+    }
+
+    .contact_group {
+      padding-top: 31px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      @include breakpoint(max-xl) {
+        gap: 10px;
+      }
+      @include breakpoint(max-sm) {
+        gap: 17px;
+      }
+      .contact_item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        @include breakpoint(max-sm) {
+          gap: 7px;
+        }
+
+        .img_wrapper {
+          width: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+
+    // donation
+    .donation {
+      .paypal_btn {
+        @extend .poppins_font;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 27px;
+        color: #27346a;
+        padding: 4px 30px;
+        background: #f0be42;
+        border-radius: 84.1584px;
+        border: none;
+        display: flex;
+        align-items: center;
+        @include breakpoint(max-xl) {
+          padding: 4px 20px;
+        }
+        @include breakpoint(max-lg) {
+          font-size: 16px;
+          line-height: 22px;
+          padding: 4px 15px;
+        }
+        span {
+          color: #2790c3;
+        }
+      }
+    }
+
+    // social_media_group
+    .social_media_group {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      @include breakpoint(max-lg) {
+        gap: 10px;
+      }
+      img {
+        @include breakpoint(max-lg) {
+          max-width: 44px;
+        }
+        @include breakpoint(max-sm) {
+          max-width: 32px;
+        }
+      }
+    }
+  }
+
+  .joined_text {
+    @extend .open_sans_font;
+    position: absolute;
+    right: 28px;
+    top: 21px;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: $black-color;
+    @include breakpoint(max-sm) {
+      right: 20px;
+      top: 17px;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+@import "../../../Common.scss";
+
+#pin_top {
+  padding-top: 62px;
+  padding-bottom: 100px;
+  @include breakpoint(max-lg) {
+    padding-top: 42px;
+    padding-bottom: 50px;
+  }
+  @include breakpoint(max-sm) {
+    padding-top: 10px;
+    padding-bottom: 34px;
+  }
+  .contents {
+    max-width: 721px;
+    margin: 0 auto;
+    @include breakpoint(max-sm) {
+        max-width: 300px;
+      }
+    img {
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 31px;
+      @include breakpoint(max-sm) {
+        margin-bottom: 23px;
+      }
+    }
+    h2 {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 37.6298px;
+      line-height: 56px;
+      leading-trim: both;
+      text-edge: cap;
+      text-align: center;
+      color: #000000;
+      @include breakpoint(max-lg) {
+        font-size: 28.6298px;
+      line-height: 42px;
+      }
+      @include breakpoint(max-sm) {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+@import "../../../../Common.scss";
+
+#edit_photo {
+  position: relative;
+  form {
+    width: 249px;
+    height: 236px;
+    background: #eeeeee;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    .placeholder_photo {
+      width: 43.76px;
+      height: 43.76px;
+      @include breakpoint(max-sm) {
+        width: 21.76px;
+        height: 21.76px;
+      }
+    }
+    @include breakpoint(max-lg) {
+      width: 100%;
+      height: 206px;
+    }
+    @include breakpoint(max-md) {
+      width: 100%;
+      height: 256px;
+    }
+    @include breakpoint(max-sm) {
+      width: 100%;
+      height: 126px;
+      border-radius: 5.06024px;
+    }
+    .input_photo {
+      border-radius: 10px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .delete_btn {
+    border: 1px solid rgba(0, 0, 0, 0.245);
+    outline: none;
+    background-color: white;
+    box-shadow: 0px 3.23851px 32.3851px rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    padding: 10px 10px;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    @include breakpoint(max-sm){
+      width: 20px;
+      height: 20px;
+      img{
+        width: 16px;
+      }
+
+    }
+  }
+}

@@ -1,0 +1,198 @@
+@import "../../../../Common.scss";
+
+.modal-dialog {
+  max-width: 1181px !important;
+  padding: 0 20px;
+  @include breakpoint(max-sm) {
+    padding: 0 10px;
+  }
+  padding-bottom: 20px;
+}
+
+.modal-content {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.modal-body {
+  padding: 0 !important;
+}
+#pin_modal {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  z-index: 100;
+
+  .modal_container {
+    width: 100%;
+    border-radius: 10px;
+    max-width: 1141px;
+  }
+  .modal_contents {
+    width: 100%;
+    background-color: $white-color;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .text_contents_wrapper {
+    padding: 32px 102px 41px 40px;
+    @include breakpoint(max-lg) {
+      padding: 32px 41px 41px 40px;
+    }
+    @include breakpoint(max-md) {
+      padding: 32px 31px 41px 30px;
+    }
+    @include breakpoint(max-sm) {
+      padding: 32px 31px 41px 30px;
+    }
+    @media all and (max-width: 400px) {
+      padding: 10px 10px 13px 16px;
+    }
+    p {
+      @extend .poppins_font;
+      font-weight: 275;
+      font-size: 18px;
+      line-height: 27px;
+      color: $black-color;
+      max-width: 615px;
+
+      @include breakpoint(max-lg) {
+        font-size: 16px;
+        line-height: 22px;
+      }
+      @include breakpoint(max-sm) {
+        font-size: 12px;
+        line-height: 18px;
+      }
+    }
+
+    .text-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+
+      h2 {
+        @extend .poppins_font;
+        font-weight: 700;
+        font-size: 35px;
+        line-height: 52px;
+        letter-spacing: 0.04em;
+        color: $black-color;
+        @include breakpoint(max-md) {
+          font-size: 24px;
+          line-height: 32px;
+        }
+
+        @media all and (max-width: 400px) {
+          font-size: 18px;
+          line-height: 27px;
+        }
+      }
+
+      .location {
+        margin-top: 9px;
+        margin-bottom: 9px;
+        span {
+          @extend .poppins_font;
+          font-weight: 300;
+          font-size: 18px;
+          line-height: 27px;
+          color: $black-color;
+          margin-right: 7px;
+          @include breakpoint(max-sm) {
+            font-size: 12px;
+            line-height: 18px;
+          }
+        }
+        img {
+          @include breakpoint(max-sm) {
+            width: 11.28px;
+          }
+        }
+      }
+
+      .star {
+        display: flex;
+        align-items: center;
+        margin-top: 22px;
+        @include breakpoint(max-sm) {
+          display: none;
+        }
+        img {
+          width: 22.81px;
+          height: 22.81px;
+        }
+        span {
+          @extend .poppins_font;
+          font-weight: 300;
+          font-size: 20.2736px;
+          line-height: 30px;
+          color: $black-color;
+          margin-left: 9px;
+        }
+      }
+
+      .btn_group {
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+        button {
+          @extend .poppins_font;
+          width: 147px;
+          height: 47px;
+          border: none;
+          font-weight: 300;
+          font-size: 18px;
+          line-height: 27px;
+          text-align: center;
+          border-radius: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          white-space: nowrap;
+          &:hover {
+            opacity: 0.9;
+          }
+
+          @include breakpoint(max-sm) {
+            width: 95.35px;
+            height: 30.97px;
+            font-size: 11.6757px;
+            line-height: 18px;
+            gap: 6px;
+            img {
+              width: 9.09px;
+              height: 13.13px;
+            }
+          }
+        }
+
+        button.follow {
+          background: $black-color;
+          color: $white-color;
+        }
+        button.get_list {
+          background: $white-color;
+          border: 1px solid #095dda;
+          color: #095dda;
+        }
+      }
+    }
+  }
+
+  p.md-show {
+    @include breakpoint(max-sm) {
+      display: none;
+    }
+  }
+  p.sm-show {
+    margin-top: 10px;
+    @include breakpoint(sm) {
+      display: none;
+    }
+  }
+}

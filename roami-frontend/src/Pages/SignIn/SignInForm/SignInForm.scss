@@ -1,0 +1,281 @@
+@import "../../../Common.scss";
+
+#sign_in_form {
+  h1 {
+    @extend .poppins_font;
+    font-weight: 700;
+    font-size: 56.3339px;
+    line-height: 70px;
+    text-align: center;
+    color: $black-color;
+    @include breakpoint(max-lg) {
+      font-size: 56.3339px;
+      line-height: 70px;
+    }
+    @include breakpoint(max-md) {
+      font-size: 36.3339px;
+      line-height: 58px;
+    }
+    @include breakpoint(max-sm) {
+      font-size: 28.3339px;
+      line-height: 42px;
+    }
+  }
+
+  span {
+    @extend .poppins_font;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 33px;
+    display: block;
+    text-align: center;
+    color: #3c3c3c;
+    @include breakpoint(max-md) {
+      font-size: 18px;
+      line-height: 24px;
+    }
+    @include breakpoint(max-sm) {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+  .form_wrapper {
+    .form {
+      max-width: 500px;
+      max-height: 649px;
+      margin: 0 auto;
+      background: #ffffff;
+      box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.15);
+      border-radius: 20px;
+      filter: drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.15));
+      padding: 33px 52px 70px 52px;
+      position: relative;
+
+      @include breakpoint(max-lg) {
+        padding: 33px 32px 70px 32px;
+        max-width: 400px;
+        max-height: 649px;
+      }
+      @include breakpoint(max-md) {
+        max-width: 436px;
+        max-height: 549px;
+        padding: 33px 42px 50px 42px;
+      }
+      @include breakpoint(max-sm) {
+        border-radius: 15px;
+        max-width: 336px;
+        max-height: 500px;
+        padding: 23px 32px 50px 32px;
+      }
+      a {
+        text-decoration: none;
+      }
+      .logo {
+        margin-bottom: 20px;
+        @include breakpoint(max-lg) {
+          margin-bottom: 20px;
+        }
+        @include breakpoint(max-sm) {
+          margin-bottom: 10px;
+        }
+        img {
+          display: block;
+          margin: 0 auto;
+          @include breakpoint(max-sm) {
+            width: 80px;
+          }
+        }
+      }
+
+      button {
+        @extend .poppins_font;
+        width: 100%;
+        height: 57px;
+        background: $white-color;
+        border: 1px solid $black-color;
+        border-radius: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 15px;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 36px;
+        text-align: center;
+        color: #3c3c3c;
+        @include breakpoint(max-lg) {
+          font-size: 18px;
+          line-height: 22px;
+          height: 57px;
+        }
+        @include breakpoint(max-sm) {
+          gap: 5px;
+          font-size: 14px;
+          line-height: 18px;
+          height: 47px;
+          img {
+            width: 24px;
+          }
+        }
+      }
+      button.continue_with_google {
+        margin-top: 47px;
+        margin-bottom: 15px;
+        @include breakpoint(max-lg) {
+          margin-top: 27px;
+          margin-bottom: 14px;
+        }
+        @include breakpoint(max-sm) {
+          margin-top: 24px;
+          margin-bottom: 10px;
+        }
+      }
+      button.continue_with_email {
+        margin-top: 15px;
+        @include breakpoint(max-lg) {
+          margin-top: 24px;
+        }
+        @include breakpoint(max-sm) {
+          margin-top: 15px;
+        }
+      }
+
+      .or {
+        @extend .poppins_font;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 33px;
+        text-align: center;
+        color: #3c3c3c;
+        display: flex;
+        align-items: center;
+        gap: 45px;
+        @include breakpoint(max-lg) {
+          font-size: 18px;
+          line-height: 28px;
+          gap: 35px;
+        }
+        @include breakpoint(max-sm) {
+          font-size: 16px;
+          line-height: 18px;
+          gap: 15px;
+        }
+        .line {
+          background-color: $black-color;
+          width: 100%;
+          height: 1px;
+        }
+      }
+
+      .shape1 {
+        position: absolute;
+        right: 0;
+        bottom: 0px;
+        z-index: -1;
+        img {
+          @include breakpoint(max-lg) {
+            width: 300px;
+          }
+          @include breakpoint(max-md) {
+            width: 250px;
+          }
+          @include breakpoint(max-sm) {
+            width: 190px;
+          }
+        }
+      }
+    }
+  }
+
+  .input_group {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 39px;
+    margin-bottom: 18px;
+    @include breakpoint(max-sm) {
+      margin-top: 29px;
+      margin-bottom: 10px;
+    }
+    input {
+      @extend .poppins_font;
+      height: 59px;
+      width: 100%;
+      background: $white-color;
+      border: 1px solid $black-color;
+      border-radius: 100px;
+      padding: 0 37px;
+      display: flex;
+      align-items: center;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 25px;
+      color: $black-color;
+      margin: 0 auto;
+      @include breakpoint(max-lg) {
+        font-size: 16px;
+        line-height: 18px;
+        padding: 0 17px;
+        height: 49px;
+      }
+      @include breakpoint(max-sm) {
+        font-size: 14px;
+        line-height: 18px;
+        padding: 0 12px;
+        height: 39px;
+      }
+      &::placeholder {
+        color: $black-color;
+      }
+    }
+
+    button.submit_btn {
+      @extend .poppins_font;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 27px;
+      color: $white-color;
+      width: 100%;
+      height: 57px;
+      border: none;
+      background: #095dda;
+      border-radius: 100px;
+      @include breakpoint(max-lg) {
+        font-size: 16px;
+        line-height: 18px;
+        padding: 0 17px;
+        height: 49px;
+      }
+      @include breakpoint(max-sm) {
+        font-size: 14px;
+        line-height: 18px;
+        height: 39px;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  .back_text {
+    @extend .poppins_font;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    color: $black-color;
+    padding-bottom: 2px;
+    border-bottom: 1px solid $black-color;
+    display: inline-block;
+    cursor: pointer;
+    @include breakpoint(max-lg) {
+      font-size: 16px;
+      line-height: 22px;
+    }
+    @include breakpoint(max-sm) {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+}

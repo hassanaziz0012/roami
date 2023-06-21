@@ -1,0 +1,108 @@
+@import "../../../Common.scss";
+
+#section3 {
+  .contents {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-bottom: 160px;
+    @include breakpoint(max-lg) {
+      padding-bottom: 100px;
+    }
+    @include breakpoint(max-sm) {
+      padding-bottom: 30px;
+    }
+  }
+
+  h2 {
+    @extend .poppins_font;
+    font-weight: 700;
+    font-size: 53.7353px;
+    line-height: 81px;
+    color: $black-color;
+    text-align: center;
+    @include breakpoint(max-lg) {
+      font-size: 42.7353px;
+      line-height: 61px;
+    }
+    @include breakpoint(max-sm) {
+      font-size: 21px;
+      line-height: 32px;
+    }
+  }
+  p {
+    @extend .poppins_font;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 25px;
+    color: $black-color;
+    padding: 28px 0;
+    text-align: center;
+    @include breakpoint(max-lg) {
+      padding: 8px 0 18px 0;
+      font-size: 16px;
+      line-height: 18px;
+    }
+    @include breakpoint(max-sm) {
+      padding: 21px 0 25px 0;
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+
+  .content-wrapper {
+    display: flex;
+    align-items: center;
+    gap:  0 40px;
+    @include breakpoint(max-md) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .circle-img {
+    width: 350;
+    height: 350px;
+    border-radius: 100%;
+    // display: block;
+    // margin: 0 auto;
+    margin-bottom: 36px;
+    @include breakpoint(max-lg) {
+      width: 254.39px;
+      height: 254.39px;
+    }
+    @include breakpoint(max-sm) {
+      margin-bottom: 22px;
+      width: 224.39px;
+      height: 224.39px;
+    }
+  }
+
+  .img-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  .left_side {
+    flex-basis: 50%;
+  }
+  .right_side {
+    flex-basis: 50%;
+  }
+
+  .text-content {
+    max-width: 477px;
+    margin: 0 auto;
+    padding-right: 12px;
+    grid-column: 1;
+    @include breakpoint(max-xl) {
+      margin-right: 0px;
+    }
+    @include breakpoint(max-md) {
+      margin-right: 0;
+    }
+    @include breakpoint(max-sm) {
+      padding-right: 0px;
+      max-width: 252px;
+      margin: 0 auto;
+    }
+  }
+}

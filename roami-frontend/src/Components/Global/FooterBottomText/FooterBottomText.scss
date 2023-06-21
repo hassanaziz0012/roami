@@ -1,0 +1,54 @@
+@import "../../../Common.scss";
+
+#footer_bottom_text {
+  padding-top: 19px;
+  padding-bottom: 6px;
+
+  border-top: 1px solid #cccccc;
+  ul {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+
+    @include breakpoint(max-md) {
+      flex-wrap: wrap;
+    }
+    li {
+      a {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+        text-decoration: none;
+        color: #7d7d7d;
+        padding: 0 5px;
+        border-right: 1px solid #7d7d7d;
+        @include breakpoint(max-md) {
+          font-size: 10px;
+          line-height: 15px;
+        }
+      }
+    }
+  }
+  ul:last-child > li:last-child a {
+    border-right: none;
+  }
+  ul:first-child > li:last-child a {
+    border-right: none;
+  }
+  .text_contents {
+    display: flex;
+    align-items: center;
+    span {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 21px;
+      // margin-bottom: -5px;
+      color: #7d7d7d;
+    }
+  }
+}

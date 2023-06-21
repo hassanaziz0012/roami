@@ -1,0 +1,112 @@
+@import "../../../../Common.scss";
+
+#list_card {
+  position: relative;
+  .list_image {
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      z-index: -11;
+      transform: scale(1.02);
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+
+  .rating_title {
+    margin-top: 13px;
+    margin-bottom: 6px;
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      span {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 300;
+        font-size: 10.6667px;
+        line-height: 16px;
+        color: #000000;
+      }
+    }
+  }
+  h5 {
+    @extend .poppins_font;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    color: $black-color;
+
+    &:hover {
+      opacity: 80%;
+    }
+  }
+
+  span {
+    @extend .poppins_font;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 27px;
+    color: $black-color;
+    display: flex;
+    align-items: center;
+    img {
+      margin-left: 17px;
+      width: 15px;
+    }
+  }
+
+  button {
+    @extend .poppins_font;
+    z-index: 2;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    transition: all ease-in-out 0.3s;
+  }
+  .edit_follow_btn {
+    @extend .poppins_font;
+    z-index: 2;
+    width: 68px;
+    height: 26px;
+    position: absolute;
+    right: 11px;
+    top: 15px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    padding: 4 15px;
+    transition: all ease-in-out 0.3s;
+  }
+
+  
+  button.edit_btn {
+    padding: 4 15px;
+    border-radius: 100px;
+    font-weight: 700;
+    width: 68px;
+    height: 26px;
+    color: $black-color;
+    background: $white-color;
+    border: 1px solid $white-color;
+    &:hover {
+      background: $black-color;
+      color: $white-color;
+    }
+  }
+
+  
+ 
+
+  .love_btn{
+    background-color: transparent;
+    outline: none;
+    border: none;
+  }
+}

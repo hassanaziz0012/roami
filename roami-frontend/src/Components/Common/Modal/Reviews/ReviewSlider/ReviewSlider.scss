@@ -1,0 +1,92 @@
+@import "../../../../../Common.scss";
+
+#review_slider {
+  position: relative;
+  .slick-prev:before,
+  .slick-next:before {
+    content: "" !important;
+  }
+
+  .slick-slide {
+    padding-right: 38px;
+    @media all and (max-width: 660px) {
+      padding-right: 8px;
+    }
+  }
+  .review_slider_bottom {
+    padding-top: 71px;
+    display: flex;
+    justify-content: flex-end;
+    @include breakpoint(max-md) {
+      padding-top: 41px;
+    }
+    @include breakpoint(max-sm) {
+      padding-top: 21px;
+    }
+  }
+  .contents_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 29px;
+    z-index: 1016;
+    @include breakpoint(max-sm) {
+      gap: 19px;
+    }
+  }
+
+  .arrow_btn_group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    @include breakpoint(max-sm) {
+      gap: 0px;
+    }
+  }
+
+  .custom_prev_button {
+    border: none;
+    background-color: transparent;
+  }
+  .custom_next_button {
+    border: none;
+    background-color: transparent;
+  }
+  ul.custom-dots {
+    display: none !important;
+  }
+
+  .custom-dot-container {
+    button {
+      width: 70px;
+      height: 1px;
+      border: none;
+      background-color: rgba(188, 188, 188, 1);
+      @include breakpoint(max-lg) {
+        width: 40px;
+      }
+    }
+
+    button.active {
+      background-color: $black-color;
+    }
+  }
+
+  .shadow-shape {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1001;
+    img {
+      @include breakpoint(max-xl) {
+        width: 250px;
+      }
+      @include breakpoint(max-lg) {
+        width: 150px;
+      }
+
+      @media all and (max-width: 660px) {
+        display: none;
+      }
+    }
+  }
+}

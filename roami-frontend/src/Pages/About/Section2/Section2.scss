@@ -1,0 +1,114 @@
+@import "../../../Common.scss";
+
+#section2 {
+  .contents {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-bottom: 71px;
+    @include breakpoint(max-sm) {
+      padding-bottom: 41px;
+    }
+  }
+
+  h2 {
+    @extend .poppins_font;
+    font-weight: 700;
+    font-size: 53.7353px;
+    line-height: 81px;
+    color: $black-color;
+    @include breakpoint(max-lg) {
+      font-size: 42.7353px;
+      line-height: 61px;
+    }
+    @include breakpoint(max-sm) {
+      font-size: 21px;
+      line-height: 32px;
+    }
+  }
+  p {
+    @extend .poppins_font;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 25px;
+    color: $black-color;
+    padding: 28px 0;
+    @include breakpoint(max-lg) {
+      padding: 8px 0 18px 0;
+      font-size: 16px;
+      line-height: 18px;
+    }
+    @include breakpoint(max-sm) {
+      padding: 21px 0 25px 0;
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+  button {
+    @extend .poppins_font;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    color: #ffffff;
+    padding: 10px 45px;
+    background: $black-color;
+    border-radius: 100px;
+    border: none;
+    white-space: nowrap;
+    @include breakpoint(max-sm) {
+      border-radius: 64.8648px;
+      font-size: 11.6757px;
+      line-height: 18px;
+      padding: 6px 25px;
+    }
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  .content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    @include breakpoint(max-md) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .box-img {
+    width: 100%;
+  }
+
+  .img-content {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    grid-column: 2;
+  }
+
+  .left_side {
+    flex-basis: 50%;
+  }
+  .right_side {
+    flex-basis: 50%;
+  }
+
+  .text-content {
+    max-width: 477px;
+    margin-right: auto;
+    margin-left: 60px;
+    padding-right: 12px;
+    grid-column: 1;
+    @include breakpoint(max-xl) {
+      margin-right: 0px;
+    }
+    @include breakpoint(max-md) {
+      margin-right: 0;
+    }
+    @include breakpoint(max-sm) {
+      padding-right: 0px;
+      max-width: 252px;
+      margin: 0 auto;
+    }
+  }
+}
