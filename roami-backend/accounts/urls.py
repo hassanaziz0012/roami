@@ -10,5 +10,5 @@ urlpatterns = [
     path('account/profile/<int:user_id>/', views.GetProfileView.as_view(), name="profile"),
     path('account/user/update/<int:user_id>/', views.UserUpdateAPIView.as_view(), name='user-update'),
     path('account/profile/update/<int:user_id>/', ProfileUpdateAPIView.as_view(), name='profile-update'),
-
+    path('account/google-sign-up/', views.GoogleSocialAuthView.as_view(), name="google-sign-up"),
 ]

@@ -191,3 +191,6 @@ EMAIL_HOST_PASSWORD = 'put your app password'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+GOOGLE_CLIENT_ID = "382629192485-jpc38o1bqvlucgj237fisiu3bhgna5o4.apps.googleusercontent.com"
+SOCIAL_SECRET = "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"

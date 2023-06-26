@@ -77,3 +77,44 @@ class UpdateProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ['profile_picture', 'bio', 'country', 'city', 'paypal', 'instagram', 'youtube', 'twitter', 'facebook', 'pinterest']
+
+
+from django.conf import settings
+from rest_framework import serializers
+from accounts import google
+from accounts.register import register_social_user
+from rest_framework.exceptions import AuthenticationFailed
+from rest_framework_simplejwt.tokens import RefreshToken
+
+def get_tokens_for_user(user):
+    refresh = RefreshToken.for_user(user)
+
+    return {
+        'refresh': str(refresh),
+        'access': str(refresh.access_token),
+    }
+
+class GoogleSocialAuthSerializer(serializers.Serializer):
+    auth_token = serializers.CharField()
+
+    def validate_auth_token(self, auth_token):
+        user_data = google.Google.validate(auth_token)
+        try:
+            user_data['sub']
+        except:
+            raise serializers.ValidationError(
+                'The token is invalid or expired. Please login again.'
+            )
+        print(user_data['aud'])
+        if user_data['aud'] != settings.GOOGLE_CLIENT_ID:
+
+            raise AuthenticationFailed('oops, who are you?')
+
+        user_id = user_data['sub']
+        email = user_data['email']
+        name = user_data['name']
+        provider = 'google'
+
+        user = register_social_user(email=email)
+        return get_tokens_for_user(user)
+

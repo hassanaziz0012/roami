@@ -7,7 +7,7 @@ from drf_yasg.utils import swagger_auto_schema
 # Create your views here.
 from rest_framework import status, permissions, views
 from rest_framework.exceptions import AuthenticationFailed
-from rest_framework.generics import UpdateAPIView, get_object_or_404, ListAPIView
+from rest_framework.generics import UpdateAPIView, get_object_or_404, ListAPIView, GenericAPIView
 from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
@@ -20,7 +20,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from accounts.models import User, Profile
 from accounts.permission import IsOwnerOrReadOnly
 from accounts.serializers import CustomTokenObtainPairSerializer, GetFullUserSerializer, UpdateProfileSerializer, \
-    UserSerializerWithToken, ProfileSerializer, GetFullProfileSerializer
+    UserSerializerWithToken, ProfileSerializer, GetFullProfileSerializer, GoogleSocialAuthSerializer
 
 
 class RegisterView(APIView):
@@ -62,7 +62,12 @@ class LoginView(TokenObtainPairView):
             response = super().post(request, *args, **kwargs)
         except AuthenticationFailed as e:
             # Handle the authentication failed exception
-            error_message = 'Invalid email or password.'
+            email = self.request.data.get('email')
+            user = User.objects.filter(email=email)
+            if not user.exists():
+                error_message = 'User does not exist.'
+            else:
+                error_message = 'Invalid email or password.'
             return self.custom_error_response(error_message)
 
         return self.process_response(response)
@@ -82,7 +87,7 @@ class LoginView(TokenObtainPairView):
                 serializer = GetFullUserSerializer(user, context={'request': self.request})
                 res['user'] = serializer.data
             else:
-                error_message = 'Invalid email or password.'
+                error_message = 'User does not exist.'
                 return self.custom_error_response(error_message)
 
         return Response(res)
@@ -164,4 +169,17 @@ class ProfileUpdateAPIView(UpdateAPIView):
             return Response(content, status=status.HTTP_200_OK)
         
 
+class GoogleSocialAuthView(APIView):
+    serializer_class = GoogleSocialAuthSerializer
+    permission_classes = []
 
+    def post(self, request):
+        """
+        POST with "auth_token"
+        Send an idtoken as from google to get user information
+        """
+
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        data = ((serializer.validated_data)['auth_token'])
+        return Response(data, status=status.HTTP_200_OK)
