@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Common.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -161,7 +161,7 @@ function App() {
                 <Route path="/edit-pin/:listId" element={<EditPin />} />
                 <Route path="/pin/:pinId" element={<PinDetail />} />
                 <Route path="/create-pin/" element={<CreatePin />} />
-                {/* <Route
+                <Route
                     path="/sign-in"
                     element={
                         <SignIn
@@ -169,9 +169,9 @@ function App() {
                             userInputEmail={userInputEmail}
                         />
                     }
-                /> */}
+                />
                 <Route
-                    path="/sign-in"
+                    path="/email-sign-in"
                     element={
                         <EmailSignIn
                             userInputEmail={userInputEmail}

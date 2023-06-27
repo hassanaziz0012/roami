@@ -1,20 +1,49 @@
 import React, { useState } from "react";
 import "./SignInForm.scss";
 import { useNavigate } from "react-router-dom";
+import { backendHost } from "../../../App";
+import GoogleAuth from "../GoogleAuth/GoogleAuth";
 
 const SignInForm = ({ setUserInputEmail, userInputEmail }) => {
-    const [isWithEmail, setIsWithEmail] = useState(true);
-    const [isEmailRegister, setIsEmailRegister] = useState(true);
+    const [isWithEmail, setIsWithEmail] = useState(false);
+    const [isEmailRegister, setIsEmailRegister] = useState(false);
 
     const [password, setPassword] = useState("");
-
+    
     const navigate = useNavigate();
-    const handleNavigate = () => {
-        if (!isEmailRegister) {
-            navigate("/email-sign-in");
-        } else {
-            navigate("/sign-up");
-        }
+
+    const isEmailRegistered = () => {
+        fetch(`${backendHost}/account/login/`, {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: userInputEmail,
+                password,
+        })
+        })
+        .then(res => {
+            res.json().then(data => {
+                console.log(data);
+                if (data.status === false) {
+                    if (data.message === "User does not exist.") {
+                        navigate('/sign-up');
+                    } else {
+                        navigate("/email-sign-in");
+                    }
+                }
+                else {
+                    navigate('/email-sign-in');
+                }
+            })
+        })
+    }
+
+    const handleNavigate = (e) => {
+        e.preventDefault();
+        isEmailRegistered();
     };
     return (
         <div id="sign_in_form">
@@ -35,19 +64,16 @@ const SignInForm = ({ setUserInputEmail, userInputEmail }) => {
 
                                     <button className="submit_btn">continue</button>
                                 </form>
-                                {/* <span
+                                <span
                                     onClick={() => setIsWithEmail(false)}
                                     className="back_text"
                                 >
                                     back
-                                </span> */}
+                                </span>
                             </>
                         ) : (
                             <>
-                                <button className="continue_with_google">
-                                    <img src="/images/social-icon/google.png" alt="" />
-                                    Continue with Google
-                                </button>
+                                <GoogleAuth />
                                 <div className="or">
                                     <div className="line"></div> or <div className="line"></div>
                                 </div>

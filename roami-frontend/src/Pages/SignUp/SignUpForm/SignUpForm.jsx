@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 const EmailSignInForm = ({ userInputEmail, setUserInputEmail }) => {
     const [username, setUsername] = useState("");
     const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
     const [password, setPassword] = useState("");
     
     const [errorMsg, setErrorMsg] = useState("");
@@ -26,7 +25,6 @@ const EmailSignInForm = ({ userInputEmail, setUserInputEmail }) => {
             body: JSON.stringify({
                 username,
                 first_name: firstName,
-                last_name: lastName,
                 email: userInputEmail,
                 password,
             })
@@ -57,7 +55,6 @@ const EmailSignInForm = ({ userInputEmail, setUserInputEmail }) => {
 
                         <div className="input_group">
                             <input type="text" placeholder="First Name" required  onChange={(e) => setFirstName(e.target.value)} />
-                            <input type="text" placeholder="Last Name" required  onChange={(e) => setLastName(e.target.value)} />
                             <input type="text" placeholder="Username" required  onChange={(e) => setUsername(e.target.value)} />
                             <input
                                 type="email"
