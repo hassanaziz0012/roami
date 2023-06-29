@@ -114,6 +114,9 @@ const CreatePin = () => {
         }).then((res) => {
             res.json().then((data) => {
                 console.log(data);
+                if (data.success === true) {
+                    navigate(`/pin/${data.result.id}`)
+                }
             })
         })
     };

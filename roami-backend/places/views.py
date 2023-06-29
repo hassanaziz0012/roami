@@ -85,8 +85,12 @@ class PlaceCreateView(views.APIView):
         error_result = {}
         serializer = self.serializer_class(data=request.data, context={'request': request})
         if serializer.is_valid():
-            category_slug = request.data.get('category')
-            category = get_object_or_404(PlaceCategory, category_slug=category_slug)
+            try:
+                category = PlaceCategory.objects.get(name="Drinks")
+            except PlaceCategory.DoesNotExist:
+                category = PlaceCategory.objects.create(name="Drinks", category_slug="drinks")
+                category.save()
+                
             new_place = serializer.save(user=self.request.user, category=category)
             new_place.save()
             new_place.tags.add(*request.data.get('tags').split(','))

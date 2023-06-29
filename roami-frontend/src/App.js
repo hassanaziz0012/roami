@@ -16,6 +16,7 @@ import PinDetail from "./Pages/Pin";
 
 
 export const backendHost = "http://127.0.0.1:8000/api/v1"
+// export const backendHost = "https://api.shareyourpins.com"
 
 export const allTags = [
     {
