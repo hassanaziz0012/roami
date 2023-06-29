@@ -177,6 +177,28 @@ const EditPin = () => {
             })
         })
     };
+
+    const deletePin = () => {
+        const accessToken = localStorage.getItem("access");
+        fetch(`${backendHost}/place/${listId}/update/`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `jwt ${accessToken}`
+            }
+        }).then((res) => {
+            res.json().then((deleteData) => {
+                console.log(deleteData);
+                if (deleteData.detail) {
+                    setErrorMsg(deleteData.detail);
+                }
+                else {
+                    setErrorMsg(deleteData.message);
+                    navigate("/");
+                }
+            })
+        })
+    }
+
     return (
         <>
             <Navbar />
@@ -193,7 +215,7 @@ const EditPin = () => {
                         descriptionState={[description, setDescription]}
                     />
                     <Tags setSelectedTags={setSelectedTags} selectedTags={selectedTags} />
-                    <PhotoUpload pictures={pictures} />
+                    <PhotoUpload pictures={pictures} deleteHandler={deletePin} errorMsg={errorMsg} />
                 </form>
 
                 <MobileNavbar />

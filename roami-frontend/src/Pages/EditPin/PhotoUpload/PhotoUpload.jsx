@@ -4,7 +4,7 @@ import UploadCard from "./UploadCard/UploadCard";
 import { Modal } from "react-bootstrap";
 import ModalDetailed from "../../../Components/Common/Modal/ModalContents/ModalDetailed";
 
-const PhotoUpload = ({ pictures }) => {
+const PhotoUpload = ({ pictures, deleteHandler, errorMsg }) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     return (
@@ -29,6 +29,8 @@ const PhotoUpload = ({ pictures }) => {
                             ))}
                         </div>
 
+                        <p>{errorMsg}</p>
+
                         <div className="btn_group">
                             <div className="publish_preview_btn">
                                 <button type="button" onClick={() => setShow(true)} className="preview_btn">
@@ -38,7 +40,7 @@ const PhotoUpload = ({ pictures }) => {
                                     Publish
                                 </button>
                             </div>
-                            <button type="button" className="delete_btn">
+                            <button type="button" className="delete_btn" onClick={deleteHandler}>
                                 Delete
                             </button>
                         </div>
