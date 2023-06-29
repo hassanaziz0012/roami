@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CreatePinTopText from "./CreatePinTopText/CreatePinTopText";
 import PinForm from "./PinForm/PinForm";
 import Tags from "./Tags/Tags";
@@ -33,7 +33,7 @@ const CreatePin = () => {
 
     const navigate = useNavigate();
 
-    useState(() => {
+    useEffect(() => {
         const accessToken = localStorage.getItem("access");
         if (!accessToken) {
             navigate("/sign-in");

@@ -178,6 +178,13 @@ const EditPin = () => {
         })
     };
 
+    useEffect(() => {
+        const accessToken = localStorage.getItem("access");
+        if (!accessToken) {
+            navigate("/sign-in");
+        }
+    })
+    
     const deletePin = () => {
         const accessToken = localStorage.getItem("access");
         fetch(`${backendHost}/place/${listId}/update/`, {
