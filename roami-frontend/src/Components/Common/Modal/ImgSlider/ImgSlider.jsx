@@ -5,7 +5,7 @@ import SliderItem from "./SliderItem";
 import { backendHost } from "../../../../App";
 import { Link } from "react-router-dom";
 
-const ImgSlider = ({ userId, photos }) => {
+const ImgSlider = ({ userId, photos, placeId }) => {
     const user_liked = true;
     const [heartToggle, setHeartToggle] = useState(user_liked);
     const [index, setIndex] = useState(0);
@@ -17,7 +17,16 @@ const ImgSlider = ({ userId, photos }) => {
     };
 
     const likePin = () => {
-        fetch(`${backendHost}/`)
+        const authToken = localStorage.getItem("access");
+        fetch(`${backendHost}/place/followed/${placeId}/`, {
+            method: "POST",
+            headers: {
+                "Authorization": `jwt ${authToken}`
+            }
+        }).then(res => res.json()).then(data => {
+            console.log(data);
+            setHeartToggle(data.follow);
+        })
     }
 
     const CustomNextButton = ({ onClick }) => (
@@ -50,7 +59,7 @@ const ImgSlider = ({ userId, photos }) => {
                         <picture className="picture">
                             <img src={photos[0].photo_url} alt="1" className="img-fluid" />
                         </picture>
-                        <button className="like-icon" onClick={() => setHeartToggle(!heartToggle)}>
+                        <button className="like-icon" onClick={() => likePin() }>
                             <img
                                 src={`/images/icon/${heartToggle ? "white-heart-fill.svg" : "white-heart-outline.svg"}`}
                                 alt=""

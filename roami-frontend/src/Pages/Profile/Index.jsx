@@ -12,33 +12,31 @@ import { backendHost } from "../../App";
 const Profile = () => {
     const [lists, setLists] = useState();
     const [followedLists, setFollowedLists] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const navigate = useNavigate();
     const accessToken = localStorage.getItem("access");
 
-    const getUserLists = () => {
+    const getUserLists = async () => {
         if (!accessToken) {
             navigate('/sign-in');
         }
 
-        fetch(`${backendHost}/user/places/`, {
+        const response = await fetch(`${backendHost}/user/places/`, {
             method: "GET",
             headers: {
                 "Authorization": `jwt ${accessToken}`
             }
-        }).then((res) => {
-            res.json().then((data) => {
-                console.log(data);
-                setLists(data.results);
-            })
         })
+        const data = await response.json();
+        console.log(data);
+        setLists(data.results);
+        setIsLoading(false);
     }
-
-    
 
     useEffect(() => {
         getUserLists();
-    }, [accessToken]);
+    }, []);
       
     return (
         <>

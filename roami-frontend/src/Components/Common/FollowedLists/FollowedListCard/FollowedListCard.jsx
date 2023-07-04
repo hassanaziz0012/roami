@@ -9,8 +9,10 @@ const FollowedListCard = ({ btnType, item }) => {
     const [show, setShow] = useState(false);
     const [loveToggle, setLoveToggle] = useState(true);
     const handleClose = () => setShow(false);
-    let { title, img, location, rating } = item;
-    img = item.photo_1;
+    const img = item.photo_1;
+    const title = item.place_name;
+    const location = item.city + ", " + item.country;
+    const rating = 5;
     const [review, setReview] = useState("");
     const [reviewToggle, setReviewToggle] = useState(false);
 

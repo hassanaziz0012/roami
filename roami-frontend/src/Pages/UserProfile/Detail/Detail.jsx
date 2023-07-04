@@ -83,7 +83,7 @@ const Detail = ({ userId }) => {
                         <div className="left">
                             <img
                                 className="circle_img"
-                                src="/images/profile/mainprofile.png"
+                                src={file}
                                 alt=""
                             />
                             <h1>{name}</h1>

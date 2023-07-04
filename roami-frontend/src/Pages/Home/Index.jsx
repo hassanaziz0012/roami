@@ -5,57 +5,71 @@ import FooterBottomText from "../../Components/Global/FooterBottomText/FooterBot
 import MobileNavbar from "../../Components/Global/Navbar/MobileNavbar/MobileNavbar";
 import MobileSearchBar from "../../Components/Common/SearchBar/MobileSearchBar/MobileSearchBar";
 import Navbar from "../../Components/Global/Navbar/Navbar";
+import { allTags, backendHost } from "../../App";
 
 const Home = () => {
-  const [filteredPins, setFilteredPins] = useState([]);
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+    const [filteredPins, setFilteredPins] = useState([]);
+    const [selectedTags, setSelectedTags] = useState([]);
+    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-  // fetch data
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/pins.json");
-        const jsonData = await response.json();
-        setData(jsonData);
-        setIsLoading(false);
+    // fetch data
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                // const response = await fetch("/pins.json");
+                const response = await fetch(`${backendHost}/places/`)
+                const jsonData = await response.json();
+                console.log(jsonData);
+                setData(jsonData.results);
+                setIsLoading(false);
 
-      } catch (error) {
-        console.log("Error fetching data:", error);
-        setIsLoading(false);
-      }
-    };
+            } catch (error) {
+                console.log("Error fetching data:", error);
+                setIsLoading(false);
+            }
+        };
 
-    fetchData();
-  }, []);
+        fetchData();
+    }, []);
 
-  useEffect(() => {
-    const filteredPins = data?.filter((pin) =>
-      pin?.tags?.some((tag) => selectedTags.includes(tag))
+    useEffect(() => {
+        const filteredPins = data?.filter((pin) => {
+            const tagIds = [];
+            let tagNames = pin.tags
+
+            for (const tagName of tagNames) {
+                const tag = allTags.find(t => t.title === tagName);
+                if (tag) {
+                tagIds.push(tag.id);
+                }
+            }
+            console.log(tagIds, tagNames);
+
+            return tagIds.some((tag) => selectedTags.includes(tag))
+        });
+        if (selectedTags?.length === 0) {
+            setFilteredPins(data);
+        } else {
+            setFilteredPins(filteredPins);
+        }
+    }, [selectedTags, data]);
+
+    return (
+        <>
+            <Navbar />
+            <MobileSearchBar />
+            <main>
+                <TagsSlider
+                    setSelectedTags={setSelectedTags}
+                    selectedTags={selectedTags}
+                />
+                <Pins data={filteredPins} isLoading={isLoading} />
+                <MobileNavbar />
+            </main>
+            <FooterBottomText />
+        </>
     );
-    if (selectedTags?.length === 0) {
-      setFilteredPins(data);
-    } else {
-      setFilteredPins(filteredPins);
-    }
-  }, [selectedTags, data]);
-
-  return (
-    <>
-      <Navbar />
-      <MobileSearchBar />
-      <main>
-        <TagsSlider
-          setSelectedTags={setSelectedTags}
-          selectedTags={selectedTags}
-        />
-        <Pins data={filteredPins} isLoading={isLoading}/>
-        <MobileNavbar />
-      </main>
-      <FooterBottomText />
-    </>
-  );
 };
 
 export default Home;

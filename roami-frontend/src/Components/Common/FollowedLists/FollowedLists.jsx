@@ -20,8 +20,8 @@ function SampleNextArrow(props) {
 }
 
 const FollowedLists = () => {
+    const [data, setData] = useState([]);
     const [followedListsData, setFollowedListsData] = useState([]);
-    const shouldFetch = useRef(true);
     const navigate = useNavigate();
 
     const getFollowedLists = () => {
@@ -43,15 +43,32 @@ const FollowedLists = () => {
     }
 
     useEffect(() => {
-        if (shouldFetch.current) 
-            getFollowedLists();
-        shouldFetch.current = false
-        
+        const fetchData = async () => {
+            try {
+                // const response = await fetch("/pins.json");
+                const accessToken = localStorage.getItem("access");
+                const response = await fetch(`${backendHost}/user/followed/list/`, {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `jwt ${accessToken}`
+                    }
+                });
+                const jsonData = await response.json();
+                console.log(jsonData);
+                setData(jsonData.results);
 
-        return () => {
-            console.log("unmounting.");
-        }
+            } catch (error) {
+                console.log("Error fetching data:", error);
+            }
+        };
+
+        fetchData();
+        // getFollowedLists();
     }, []);
+
+    useEffect(() => {
+        setFollowedListsData([...new Set(data)]);
+    }, [data])
 
     const settings = {
         dots: false,

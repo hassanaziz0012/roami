@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import GotoHomePage from "../../Components/Common/GotoHomePage/GotoHomePage";
 import Navbar from "../../Components/Global/Navbar/Navbar";
 import Lists from "../../Components/Common/Lists/Lists";
@@ -6,76 +6,34 @@ import MobileNavbar from "../../Components/Global/Navbar/MobileNavbar/MobileNavb
 import Footer from "../../Components/Global/Footer/Footer";
 import Detail from "./Detail/Detail";
 import { useParams } from "react-router-dom";
+import { backendHost } from "../../App";
 
 const UserProfile = () => {
     const params = useParams();
     const { userId } = params;
 
-    const listsData = [
-        {
-            id: 1,
-            title: "Burger Love",
-            img: "/images/list/list1.png",
-            location: "Italy",
-            rating: 0,
-        },
-        {
-            id: 2,
-            title: "Romantic Spots",
-            img: "/images/list/list2.png",
-            location: "Italy",
-            rating: 0,
-        },
-        {
-            id: 3,
-            title: "Nightlife",
-            img: "/images/list/list3.png",
-            location: "Italy",
-            rating: 4.5,
-        },
-        {
-            id: 4,
-            title: "Free Parking",
-            img: "/images/list/list4.png",
-            location: "Italy",
-            rating: 0,
-        },
-        {
-            id: 5,
-            title: "Burger Love",
-            img: "/images/list/list1.png",
-            location: "Italy",
-            rating: 0,
-        },
-        {
-            id: 6,
-            title: "Romantic Spots",
-            img: "/images/list/list2.png",
-            location: "Italy",
-            rating: 0,
-        },
-        {
-            id: 7,
-            title: "Nightlife",
-            img: "/images/list/list3.png",
-            location: "Italy",
-            rating: 4.5,
-        },
-        {
-            id: 8,
-            title: "Free Parking",
-            img: "/images/list/list4.png",
-            location: "Italy",
-            rating: 0,
-        },
-    ];
+    const [lists, setLists] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const getUserLists = async () => {
+        const response = await fetch(`${backendHost}/user/places/?user_id=${userId}`)
+        const data = await response.json();
+        console.log(data);
+        setLists(data.results);
+        setIsLoading(false);
+    }
+
+    useEffect(() => {
+        getUserLists();
+    }, [])
+
     return (
         <>
             <Navbar />
             <main>
                 <GotoHomePage />
                 <Detail userId={userId} />
-                <Lists listsData={listsData} />
+                <Lists listsData={lists} />
 
                 <MobileNavbar />
             </main>

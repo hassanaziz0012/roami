@@ -34,10 +34,14 @@ class PlaceListView(ListAPIView):
 
 class UserPlaceListView(ListAPIView):
     serializer_class = PlaceSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        user = self.request.user
+        if self.request.user.is_authenticated:
+            user = self.request.user
+        else:
+            user_id = self.request.query_params.get('user_id')
+            user = get_object_or_404(User, id=user_id)
         return Location.objects.filter(user=user)
 
 

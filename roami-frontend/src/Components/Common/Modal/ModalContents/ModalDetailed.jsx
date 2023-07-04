@@ -4,6 +4,7 @@ import ImgSlider from "../ImgSlider/ImgSlider";
 import Reviews from "../Reviews/Reviews";
 
 const ModalDetailed = ({ data, user }) => {
+    const placeId = data.id;
     const title = data.place_name;
     const description = data.description;
     const locationLink = data.location_link;
@@ -58,7 +59,7 @@ const ModalDetailed = ({ data, user }) => {
             <div className="modal_container mx-auto">
                 <div className="modal_contents">
                     {/* img carousel */}
-                    <ImgSlider userId={userId} photos={photos} />
+                    <ImgSlider userId={userId} photos={photos} placeId={placeId} />
 
                     {/* text contents */}
 
