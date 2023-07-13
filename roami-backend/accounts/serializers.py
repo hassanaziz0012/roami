@@ -6,9 +6,14 @@ from accounts.models import User, Profile
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    interests = serializers.SerializerMethodField('get_interests')
+    
+    def get_interests(self, profile):
+        return profile.interests.all().values_list('name', flat=True)
+    
     class Meta:
         model = Profile
-        fields = ['id', 'profile_picture', 'bio', 'country', 'city', 'paypal', 'instagram', 'youtube', 'twitter', 'facebook', 'pinterest']
+        fields = ['id', 'profile_picture', 'bio', 'country', 'city', 'paypal', 'instagram', 'youtube', 'twitter', 'facebook', 'pinterest', 'interests']
 
 
 class UserSerializerWithToken(serializers.ModelSerializer):

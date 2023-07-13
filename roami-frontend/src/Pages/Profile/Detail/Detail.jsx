@@ -2,11 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Detail.scss";
 import Tag from "./LoveTagItem";
 import { backendHost } from "../../../App";
+import { useNavigate } from "react-router-dom";
 
 const Detail = () => {
     const [selectedTags, setSelectedTags] = useState([]);
     const [isNameEdit, setIsNameEdit] = useState(false);
     const [isBioEdit, setIsBioEdit] = useState(false);
+    const [isBioEditFinished, setIsBioEditFinished] = useState(false);
+    const [defaultInterests, setDefaultInterests] = useState([]);
 
     //menu toggle
     const [isCityMenuOpen, setIsCityMenuOpen] = useState(false);
@@ -22,7 +25,7 @@ const Detail = () => {
     const [city, setCity] = useState("Puerto Rico");
     const [home, setHome] = useState("California");
     const [loveTag, setLoveTag] = useState(
-        "Photography, Design, Music, Roadtrips, Biking"
+        ""
     );
 
     //handle social media useState
@@ -43,6 +46,8 @@ const Detail = () => {
     const [twitterUrl, setTwitterUrl] = useState("jhone111");
 
     const [facebookUrl, setFacebookUrl] = useState("");
+
+    const navigate = useNavigate();
 
     //handle tag
     const handleTag = (tag) => {
@@ -77,6 +82,7 @@ const Detail = () => {
                     setDescription(data.profile.bio || "");
                     setCity(data.profile.city);
                     setHome(data.profile.country);
+                    setSelectedTags(data.profile.interests);
 
                     setPaypalUrl(data.profile.paypal);
                     setFacebookUrl(data.profile.facebook);
@@ -84,6 +90,8 @@ const Detail = () => {
                     setInstagramUrl(data.profile.instagram);
                     setYoutubeUrl(data.profile.youtube);
                     setTwitterUrl(data.profile.twitter);
+
+                    setIsBioEditFinished(false);
                     
                 })
             })
@@ -91,7 +99,7 @@ const Detail = () => {
     }
 
     const updateProfile = () => {
-        console.log(isBioEdit);
+        console.log(selectedTags);
         if (isBioEdit === true) {
             fetch(`${backendHost}/account/profile/update/${userId}/`, {
                 method: "PATCH",
@@ -105,6 +113,7 @@ const Detail = () => {
                     country: home,
                     city: city,
                     paypal: paypalUrl,
+                    interests: selectedTags,
                     facebook: facebookUrl,
                     twitter: twitterUrl,
                     pinterest: pinterestUrl,
@@ -113,7 +122,7 @@ const Detail = () => {
                 })
             }).then((res) => {
                 res.json().then((data) => {
-                    console.log(data);
+                    setIsBioEditFinished(true);
                 })
             })
         }
@@ -145,12 +154,32 @@ const Detail = () => {
 
     useEffect(() => {
         getProfile();
+    }, [isBioEditFinished])
 
+    useEffect(() => {
         const updatedTags = selectedTags.join(" , ");
         if (selectedTags.length > 0) {
             setLoveTag(updatedTags);
         }
     }, [selectedTags]);
+
+    useEffect(() => {
+        const getData = async () => {
+            const resp = await fetch('interests.json');
+            const data = await resp.json();
+            console.log(data);
+            setDefaultInterests(data);
+        }
+
+        getData();
+    }, [])
+
+    const logout = (e) => {
+        e.preventDefault();
+        localStorage.removeItem("access");
+        localStorage.removeItem("refresh");
+        navigate('/');
+    }
 
     //handle social media
     const socialMedia = {
@@ -433,7 +462,7 @@ const Detail = () => {
                             </div>
                             <span>Community Score</span>
 
-                            <button className="follow_btn">follow +</button>
+                            <button className="follow_btn" onClick={logout}>Log out</button>
                         </div>
 
                         <button
@@ -588,13 +617,7 @@ const Detail = () => {
 
                                         {isTagMenuOpen && isBioEdit && (
                                             <div className="drop_down_item">
-                                                {[
-                                                    { id: 1, title: "Photography" },
-                                                    { id: 2, title: "Design" },
-                                                    { id: 3, title: "Music" },
-                                                    { id: 4, title: "Roadtrips" },
-                                                    { id: 5, title: "Biking" },
-                                                ]?.map((it) => (
+                                                {defaultInterests?.map(it => (
                                                     <Tag key={it.id} item={it} handleTag={handleTag} />
                                                 ))}
 

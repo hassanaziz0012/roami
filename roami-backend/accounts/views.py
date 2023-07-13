@@ -17,7 +17,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from accounts.models import User, Profile
+from accounts.models import User, Profile, Interest
 from accounts.permission import IsOwnerOrReadOnly
 from accounts.serializers import CustomTokenObtainPairSerializer, GetFullUserSerializer, UpdateProfileSerializer, \
     UserSerializerWithToken, ProfileSerializer, GetFullProfileSerializer, GoogleSocialAuthSerializer
@@ -160,9 +160,16 @@ class ProfileUpdateAPIView(UpdateAPIView):
         if serializer.is_valid():
 
             serializer.save()
+            interests = request.data.get('interests')
+            interest_objs = Interest.objects.filter(name__in=interests)
+            print(interests, interest_objs)
+            instance.interests.clear()
+            instance.interests.add(*interest_objs)
+            result = serializer.data
+            result['interests'] = list(instance.interests.all().values_list('name', flat=True))
             output = "Successfully account updated"
             content1 = {'success': [output]}
-            content = {'status': True, 'message': content1, 'result': serializer.data}
+            content = {'status': True, 'message': content1, 'result': result}
             return Response(content, status=status.HTTP_200_OK)
         else:
             content = {'status': False, 'message': serializer.errors, 'result': {}}

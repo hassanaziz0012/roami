@@ -61,6 +61,7 @@ class Profile(models.Model):
     profile_picture = models.ImageField(
         upload_to='profile_pictures/', blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
+    interests = models.ManyToManyField('accounts.Interest', blank=True)
     followers = models.ManyToManyField(User, related_name='following', blank=True)
     country = models.CharField(blank=True, max_length=100)
     city = models.CharField(blank=True, max_length=100)
@@ -81,6 +82,53 @@ class Profile(models.Model):
     @property
     def following_count(self):
         return self.following.count()
+    
+
+class Interest(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100)
+
+    @classmethod
+    def create_default_interests(cls):
+        default_interests = [
+            'Animals', 'Cooking', 'Food', 'Movies', 'Travel', 'Outdoors', 
+            'Video games', 'Board games', 'Reading', 'Museums', 'Anime', 
+            'Architecture', 'Art', 'Aviation', 'Backpacking', 'Building things', 
+            'Camping', 'Card Games', 'Cars', 'Celebrities', 'Comedy', 'Crafting', 
+            'Cultural heritage', 'Design', 'Fashion', 'Gardening', 'Hair', 'Hiking', 
+            'Home improvement', 'Kpop', 'Live music', 'Live sports', 'Makeup', 
+            'Photography', 'Playing music', 'Podcasts', 'Pop culture', 'Puzzles', 
+            'Self-care', 'Shopping', 'Singing', 'Social activism', 'Sustainability', 
+            'TV', 'Technology', 'Theater', 'Walking', 'Wine', 'Writing', 'Yoga', 
+            'Baseball', 'Cycling', 'Tai chi', 'Weight lifting', 'Ultimate frisbee', 
+            'Figure skating', 'Shooting sports', 'Basketball', 'Sumo wrestling', 
+            'Handball', 'Adrenaline sports', 'American football', 'Archery', 
+            'Badminton', 'Basque pelota', 'Billiards', 'Bobsledding', 'Bocce ball', 
+            'Bowling', 'Boxing', 'Bridge', 'Canoeing', 'Charreria', 'Cheerleading', 
+            'Chess', 'Climbing', 'Cricket', 'Curling', 'Dance', 'Darts', 'Diving', 
+            'Dodgeball', 'Equestrian sports', 'Fantasy sports', 'Fencing', 
+            'Field hockey', 'Fishing', 'Golf', 'Gymnastics', 'Hockey', 'Horse racing', 
+            'Judo', 'Karate', 'Kayaking', 'Kickboxing', 'Kung fu', 'Lacrosse', 'Luge', 
+            'Motor sports', 'Netball', 'Padel', 'Pentathlon', 'Pickleball', 'Poker', 
+            'Polo', 'Racquetball', 'Rodeo', 'Roller derby', 'Roller skating', 'Rowing', 
+            'Rugby', 'Running', 'Sailing', 'Skateboarding', 'Skiing', 'Snowboarding', 
+            'Soccer', 'Squash', 'Surfing', 'Swimming', 'Table tennis', 'Taekwondo', 
+            'Tennis', 'Track & field', 'Volleyball', 'Water polo', 'Wrestling'
+            ]
+        objs = []
+        for interest in default_interests:
+            try:
+                i = Interest.objects.get(name=interest)
+            except Interest.DoesNotExist:
+                i = Interest(name=interest, slug=interest.lower())
+                objs.append(i)
+        Interest.objects.bulk_create(objs)
+
+    def __str__(self) -> str:
+        return self.name
+    
+    def __repr__(self) -> str:
+        return f"<Interest: {self.name}>"
 
 
 @receiver(post_save, sender=User)
