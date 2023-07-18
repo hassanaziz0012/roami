@@ -13,7 +13,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Profile
-        fields = ['id', 'profile_picture', 'bio', 'country', 'city', 'paypal', 'instagram', 'youtube', 'twitter', 'facebook', 'pinterest', 'interests']
+        fields = ['id', 'profile_picture', 'bio', 'country', 'city', 'paypal', 'instagram', 'youtube', 'tiktok', 'interests']
 
 
 class UserSerializerWithToken(serializers.ModelSerializer):
@@ -55,7 +55,7 @@ class GetFullProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ['user', 'id', 'profile_picture', 'bio', 'country', 'city', 'paypal', 'instagram', 'youtube', 'twitter', 'facebook', 'pinterest']
+        fields = ['user', 'id', 'profile_picture', 'bio', 'country', 'city', 'paypal', 'instagram', 'youtube', 'tiktok']
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -81,7 +81,7 @@ class UpdateProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ['profile_picture', 'bio', 'country', 'city', 'paypal', 'instagram', 'youtube', 'twitter', 'facebook', 'pinterest']
+        fields = ['profile_picture', 'bio', 'country', 'city', 'paypal', 'instagram', 'youtube', 'tiktok']
 
 
 from django.conf import settings

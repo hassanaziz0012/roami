@@ -135,7 +135,7 @@ const Detail = ({ userId }) => {
 
                             {/* Donations */}
                             <div className="donation">
-                                <h6>Donations</h6>
+                                <h6>Say Thank You</h6>
                                 <button className="paypal_btn">
                                     <Link to={paypalUrl}>
                                         {" "}

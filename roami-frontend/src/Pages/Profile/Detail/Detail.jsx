@@ -30,22 +30,14 @@ const Detail = () => {
 
     //handle social media useState
     const [isInstagramModalOpen, setIsInstagramModalOpen] = useState(false);
-    const [isFacebookModalOpen, setIsFacebookModalOpen] = useState(false);
     const [isYoutubeModalOpen, setIsYoutubeModalOpen] = useState(false);
-    const [isTwitterModalOpen, setIsTwitterModalOpen] = useState(false);
-    const [isPinterestModalOpen, setIsPinterestModalOpen] = useState(false);
     const [isPaypalModalOpen, setIsPaypalModalOpen] = useState(false);
+    const [isTiktokModalOpen, setIsTiktokModalOpen] = useState(false);
 
     const [paypalUrl, setPaypalUrl] = useState("jhone11");
     const [instagramUrl, setInstagramUrl] = useState("jhone111");
-
     const [youtubeUrl, setYoutubeUrl] = useState("");
-
-    const [pinterestUrl, setPinterestUrl] = useState("");
-
-    const [twitterUrl, setTwitterUrl] = useState("jhone111");
-
-    const [facebookUrl, setFacebookUrl] = useState("");
+    const [tiktokUrl, setTiktokUrl] = useState("");
 
     const navigate = useNavigate();
 
@@ -85,11 +77,9 @@ const Detail = () => {
                     setSelectedTags(data.profile.interests);
 
                     setPaypalUrl(data.profile.paypal);
-                    setFacebookUrl(data.profile.facebook);
-                    setPinterestUrl(data.profile.pinterest);
                     setInstagramUrl(data.profile.instagram);
                     setYoutubeUrl(data.profile.youtube);
-                    setTwitterUrl(data.profile.twitter);
+                    setTiktokUrl(data.profile.tiktok);
 
                     setIsBioEditFinished(false);
                     
@@ -114,9 +104,7 @@ const Detail = () => {
                     city: city,
                     paypal: paypalUrl,
                     interests: selectedTags,
-                    facebook: facebookUrl,
-                    twitter: twitterUrl,
-                    pinterest: pinterestUrl,
+                    tiktok: tiktokUrl,
                     instagram: instagramUrl,
                     youtube: youtubeUrl,
                 })
@@ -185,10 +173,8 @@ const Detail = () => {
     const socialMedia = {
         instagram: instagramUrl,
         youtube: youtubeUrl,
-        pinterest: pinterestUrl,
-        twitter: twitterUrl,
-        facebook: facebookUrl,
         paypal: paypalUrl,
+        tiktok: tiktokUrl
     };
 
     //profile pic
@@ -238,7 +224,7 @@ const Detail = () => {
         };
     }, []);
 
-    // pinterest
+    // tiktok
     const containerRef3 = useRef(null);
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -246,7 +232,7 @@ const Detail = () => {
                 containerRef3.current &&
                 !containerRef3.current.contains(event.target)
             ) {
-                setIsPinterestModalOpen(false);
+                setIsTiktokModalOpen(false);
             }
         };
 
@@ -259,41 +245,43 @@ const Detail = () => {
 
 
     // twitter
-    const containerRef4 = useRef(null);
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (
-                containerRef4.current &&
-                !containerRef4.current.contains(event.target)
-            ) {
-                setIsTwitterModalOpen(false);
-            }
-        };
+    // const containerRef4 = useRef(null);
+    // useEffect(() => {
+    //     const handleClickOutside = (event) => {
+    //         if (
+    //             containerRef4.current &&
+    //             !containerRef4.current.contains(event.target)
+    //         ) {
+    //             setIsTwitterModalOpen(false);
+    //         }
+    //     };
 
-        document.addEventListener("click", handleClickOutside);
+    //     document.addEventListener("click", handleClickOutside);
 
-        return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
-    }, []);
+    //     return () => {
+    //         document.removeEventListener("click", handleClickOutside);
+    //     };
+    // }, []);
+
     // facebook
-    const containerRef5 = useRef(null);
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (
-                containerRef5.current &&
-                !containerRef5.current.contains(event.target)
-            ) {
-                setIsFacebookModalOpen(false);
-            }
-        };
+    // const containerRef5 = useRef(null);
+    // useEffect(() => {
+    //     const handleClickOutside = (event) => {
+    //         if (
+    //             containerRef5.current &&
+    //             !containerRef5.current.contains(event.target)
+    //         ) {
+    //             setIsFacebookModalOpen(false);
+    //         }
+    //     };
 
-        document.addEventListener("click", handleClickOutside);
+    //     document.addEventListener("click", handleClickOutside);
 
-        return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
-    }, []);
+    //     return () => {
+    //         document.removeEventListener("click", handleClickOutside);
+    //     };
+    // }, []);
+
     // paypal
     const containerRef6 = useRef(null);
     useEffect(() => {
@@ -653,15 +641,13 @@ const Detail = () => {
                                     className={`donation  ${paypalUrl || isBioEdit ? "" : "d-none"
                                         }`}
                                 >
-                                    <h6>Donations</h6>
+                                    <h6>Say Thank You</h6>
                                     <button
                                         onClick={() => {
                                             setIsPaypalModalOpen(!isPaypalModalOpen);
                                             setIsInstagramModalOpen(false);
-                                            setIsPinterestModalOpen(false);
-                                            setIsTwitterModalOpen(false);
                                             setIsYoutubeModalOpen(false);
-                                            setIsFacebookModalOpen(false);
+                                            setIsTiktokModalOpen(false);
                                         }}
                                         className="paypal_btn"
                                     >
@@ -715,10 +701,8 @@ const Detail = () => {
                                         onClick={() => {
                                             setIsPaypalModalOpen(false);
                                             setIsInstagramModalOpen(!isInstagramModalOpen);
-                                            setIsPinterestModalOpen(false);
-                                            setIsTwitterModalOpen(false);
                                             setIsYoutubeModalOpen(false);
-                                            setIsFacebookModalOpen(false);
+                                            setIsTiktokModalOpen(false);
                                         }}
                                         className=""
                                     >
@@ -770,10 +754,8 @@ const Detail = () => {
                                         onClick={() => {
                                             setIsPaypalModalOpen(false);
                                             setIsInstagramModalOpen(false);
-                                            setIsPinterestModalOpen(false);
-                                            setIsTwitterModalOpen(false);
                                             setIsYoutubeModalOpen(!isYoutubeModalOpen);
-                                            setIsFacebookModalOpen(false);
+                                            setIsTiktokModalOpen(false);
                                         }}
                                         className=""
                                     >
@@ -812,52 +794,51 @@ const Detail = () => {
                                     )}
                                 </div>
 
-                                {/* Pinterest */}
+                                {/* Tiktok */}
                                 <div
                                     ref={containerRef3}
-                                    className={`  ${pinterestUrl || isBioEdit ? "" : "d-none"
+                                    className={`  ${tiktokUrl || isBioEdit ? "" : "d-none"
                                         }`}
                                 >
                                     <button
                                         onClick={() => {
                                             setIsPaypalModalOpen(false);
                                             setIsInstagramModalOpen(false);
-                                            setIsPinterestModalOpen(false);
-                                            setIsTwitterModalOpen(false);
-                                            setIsPinterestModalOpen(!isPinterestModalOpen);
-                                            setIsFacebookModalOpen(false);
+                                            setIsTiktokModalOpen(!isTiktokModalOpen);
                                         }}
                                         className=""
                                     >
                                         {" "}
                                         <img
-                                            src="/images/social-icon/pinterest.png"
-                                            alt="Pinterest"
+                                            src="/images/social-icon/tiktok.png"
+                                            alt="Tiktok"
+                                            width={54}
+                                            height={54}
                                         />
                                     </button>
 
-                                    {isPinterestModalOpen && isBioEdit && (
+                                    {isTiktokModalOpen && isBioEdit && (
                                         <div className="media_common ">
-                                            <label htmlFor="">Pinterest Url</label>
+                                            <label htmlFor="">Tiktok Url</label>
                                             <input
                                                 type="text"
                                                 placeholder=" E.g jone123"
-                                                onChange={(e) => setPinterestUrl(e.target.value)}
-                                                value={pinterestUrl}
+                                                onChange={(e) => setTiktokUrl(e.target.value)}
+                                                value={tiktokUrl}
                                             />
 
                                             <div className="btn_group">
                                                 <button
                                                     onClick={() => {
-                                                        setIsPinterestModalOpen(false);
+                                                        setIsTiktokModalOpen(false);
                                                     }}
                                                 >
                                                     Add
                                                 </button>
                                                 <button
                                                     onClick={() => {
-                                                        setPinterestUrl("");
-                                                        setIsPinterestModalOpen(false);
+                                                        setTiktokUrl("");
+                                                        setIsTiktokModalOpen(false);
                                                     }}
                                                 >
                                                     Delete
@@ -868,7 +849,7 @@ const Detail = () => {
                                 </div>
 
                                 {/* Twitter */}
-                                <div
+                                {/* <div
                                     ref={containerRef4}
                                     className={`  ${twitterUrl || isBioEdit ? "" : "d-none"
                                         }`}
@@ -917,10 +898,10 @@ const Detail = () => {
                                             </div>
                                         </div>
                                     )}
-                                </div>
+                                </div> */}
 
                                 {/* Facebook */}
-                                <div
+                                {/* <div
                                     ref={containerRef5}
                                     className={`  ${facebookUrl || isBioEdit ? "" : "d-none"
                                         }`}
@@ -971,7 +952,7 @@ const Detail = () => {
                                             </div>
                                         </div>
                                     )}
-                                </div>
+                                </div> */}
 
                                 {/* <Link to="#">
                   <img src="/images/social-icon/twitter.png" alt="twitter" />

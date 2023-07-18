@@ -13,7 +13,7 @@ const SignInForm = ({ setUserInputEmail, userInputEmail }) => {
     const navigate = useNavigate();
 
     const isEmailRegistered = () => {
-        fetch(`${backendHost}/account/login/`, {
+        fetch(`${backendHost}/account/email-exists/`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -21,18 +21,13 @@ const SignInForm = ({ setUserInputEmail, userInputEmail }) => {
             },
             body: JSON.stringify({
                 email: userInputEmail,
-                password,
-        })
+            })
         })
         .then(res => {
             res.json().then(data => {
                 console.log(data);
-                if (data.status === false) {
-                    if (data.message === "User does not exist.") {
-                        navigate('/sign-up');
-                    } else {
-                        navigate("/email-sign-in");
-                    }
+                if (data.exists === false) {
+                    navigate('/sign-up');
                 }
                 else {
                     navigate('/email-sign-in');
@@ -78,12 +73,16 @@ const SignInForm = ({ setUserInputEmail, userInputEmail }) => {
                                     <div className="line"></div> or <div className="line"></div>
                                 </div>
 
-                                <button
-                                    onClick={() => setIsWithEmail(true)}
-                                    className="continue_with_email"
-                                >
-                                    Continue with Email
-                                </button>
+                                <form className="input_group" onSubmit={handleNavigate}>
+                                    <input type="email" placeholder="Email" required onChange={(e) => setUserInputEmail(e.target.value)} />
+
+                                    <button
+                                        className="continue_with_email"
+                                    >
+                                        Continue with Email
+                                    </button>
+                                </form>
+                                
                             </>
                         )}
 

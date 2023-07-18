@@ -66,11 +66,9 @@ class Profile(models.Model):
     country = models.CharField(blank=True, max_length=100)
     city = models.CharField(blank=True, max_length=100)
     paypal = models.URLField(blank=True, null=True, max_length=100)
-    facebook = models.URLField(blank=True, null=True, max_length=100)
     instagram = models.URLField(blank=True, null=True, max_length=100)
     youtube = models.URLField(blank=True, null=True, max_length=100)
-    twitter = models.URLField(blank=True, null=True, max_length=100)
-    pinterest = models.URLField(blank=True, null=True, max_length=100)
+    tiktok = models.URLField(blank=True, null=True, max_length=100)
 
     def __str__(self):
         return f"Profile - User: {self.user.username} - Name: {self.user.get_full_name()}"

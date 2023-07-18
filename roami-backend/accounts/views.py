@@ -98,6 +98,12 @@ class LoginView(TokenObtainPairView):
             'message': error_message,
             'result': {}
         }, status=status.HTTP_200_OK)
+    
+
+class EmailExistsView(APIView):
+    def post(self, request, *args, **kwargs):
+        email = request.data.get('email')
+        return Response({'exists': User.objects.filter(email=email).exists()})
 
 
 class GetProfileView(APIView):
