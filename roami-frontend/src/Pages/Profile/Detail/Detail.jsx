@@ -3,6 +3,9 @@ import "./Detail.scss";
 import Tag from "./LoveTagItem";
 import { backendHost } from "../../../App";
 import { useNavigate } from "react-router-dom";
+import CroppedImageUpload from "../../../Components/Common/CroppedImageUpload/CroppedImageUpload";
+import { Button, Form, Modal } from "react-bootstrap";
+
 
 const Detail = () => {
     const [selectedTags, setSelectedTags] = useState([]);
@@ -10,6 +13,16 @@ const Detail = () => {
     const [isBioEdit, setIsBioEdit] = useState(false);
     const [isBioEditFinished, setIsBioEditFinished] = useState(false);
     const [defaultInterests, setDefaultInterests] = useState([]);
+    
+    const [imgSrc, setImgSrc] = useState('');
+    const [crop, setCrop] = useState();
+    const [resultBlob, setResultBlob] = useState();
+    const blobRef = useRef(null);
+    const setCroppedResult = (blob) => {
+        setResultBlob(blob);
+        setFile(URL.createObjectURL(blob));
+        setFileObj(blob);
+    }
 
     //menu toggle
     const [isCityMenuOpen, setIsCityMenuOpen] = useState(false);
@@ -70,7 +83,7 @@ const Detail = () => {
                     setUserId(data.id);
                     // setName(data.first_name + ' ' + data.last_name);
                     setFile(data.profile.profile_picture);
-                    setName(data.username);
+                    setName(data.first_name);
                     setDescription(data.profile.bio || "");
                     setCity(data.profile.city);
                     setHome(data.profile.country);
@@ -177,14 +190,48 @@ const Detail = () => {
         tiktok: tiktokUrl
     };
 
+    // modal stuff
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     //profile pic
     const [file, setFile] = useState("/images/profile/mainprofile.png");
     const [fileObj, setFileObj] = useState(null);
 
     const getFile = (e) => {
-        setFile(URL.createObjectURL(e.target.files[0]));
-        setFileObj(e.target.files[0]);
+        if (e.target.files && e.target.files.length > 0) {
+            // setFile(URL.createObjectURL(e.target.files[0]));
+            // setFileObj(e.target.files[0]);
+    
+            setCrop(undefined) // Makes crop preview update between images.
+            const reader = new FileReader()
+            reader.addEventListener('load', () =>
+                setImgSrc(reader.result?.toString() || ''),
+            )
+            reader.readAsDataURL(e.target.files[0])
+        }
     };
+
+    function selectCroppedImage() {
+        if (!blobRef.current) {
+            throw new Error('Crop canvas does not exist')
+        }
+
+        blobRef.current.toBlob((blob) => {
+            if (!blob) {
+                throw new Error('Failed to create blob')
+            }
+            // if (blobUrlRef.current) {
+            //     URL.revokeObjectURL(blobUrlRef.current)
+            // }
+            setCroppedResult(blob);
+            setShow(false);
+            // blobUrlRef.current = URL.createObjectURL(blob)
+            // hiddenAnchorRef.current.href = blobUrlRef.current
+            // hiddenAnchorRef.current.click()
+        })
+    }
 
     //instagram
     const containerRef = useRef(null);
@@ -404,6 +451,23 @@ const Detail = () => {
 
     return (
         <section id="profile">
+
+            <Modal show={show} onHide={handleClose} centered style={{ background: "#fff" }}>
+                <Modal.Header>
+                    <h2>Crop image</h2>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form.Group className="profile_pic_upload_input mb-3">
+                        <Form.Control type="file" onChange={getFile} accept="image/*" />
+                    </Form.Group>
+                    <CroppedImageUpload imgSrcState={[imgSrc, setImgSrc]} cropState={[crop, setCrop]} blobRef={blobRef} />
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>Close</Button>
+                    <Button variant="primary" onClick={selectCroppedImage}>Save changes</Button>
+                </Modal.Footer>
+            </Modal>
+
             <div className="container">
                 <div className="profile_contents">
                     {/* profile pic side */}
@@ -422,16 +486,10 @@ const Detail = () => {
                                         document.querySelector(".profile_pic_input").click()
                                     }
                                 >
-                                    <input
-                                        type="file"
-                                        onChange={getFile}
-                                        className="profile_pic_input"
-                                        name=""
-                                        id=""
-                                        accept="image/*"
-                                        hidden
-                                    />
-                                    <img src="/images/icon/camera.png" alt="" />
+                                    
+                                    <button className="profile_pic_input" onClick={handleShow} style={{ border: 'none' }}>
+                                        <img src="/images/icon/camera.png" alt="" />
+                                    </button>
                                 </div>
                             </div>
 

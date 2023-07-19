@@ -53,7 +53,7 @@ const Detail = ({ userId }) => {
 
                     // setName(data.first_name + ' ' + data.last_name);
                     setFile(data.profile.profile_picture);
-                    setName(data.username);
+                    setName(data.first_name);
                     setDescription(data.profile.bio || "");
                     setCity(data.profile.city);
                     setHome(data.profile.country);

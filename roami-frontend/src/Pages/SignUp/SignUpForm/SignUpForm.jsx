@@ -13,6 +13,32 @@ const EmailSignInForm = ({ userInputEmail, setUserInputEmail }) => {
 
     const navigate = useNavigate();
 
+    const login = () => {
+        fetch(`${backendHost}/account/login/`, {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: userInputEmail,
+                password,
+            })
+        }).then(res => {
+            res.json().then(data => {
+                console.log(data);
+                if (data.status === false) {
+                    setErrorMsg(data.message);
+                } else {
+                    localStorage.setItem('access', data.access);
+                    localStorage.setItem('refresh', data.refresh);
+                    setErrorMsg("Account created successfully! Logging you in...");
+                    navigate("/profile");
+                }
+            })
+        })
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(username, userInputEmail, password);
@@ -37,7 +63,7 @@ const EmailSignInForm = ({ userInputEmail, setUserInputEmail }) => {
                 }
                 else if (data.status === true) {
                     setErrorMsg("Success.");
-                    navigate("/sign-in");
+                    login();
                 }
             })
         })

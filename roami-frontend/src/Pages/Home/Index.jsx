@@ -6,6 +6,7 @@ import MobileNavbar from "../../Components/Global/Navbar/MobileNavbar/MobileNavb
 import MobileSearchBar from "../../Components/Common/SearchBar/MobileSearchBar/MobileSearchBar";
 import Navbar from "../../Components/Global/Navbar/Navbar";
 import { allTags, backendHost } from "../../App";
+import CroppedImageUpload from '../../Components/Common/CroppedImageUpload/CroppedImageUpload';
 
 const Home = () => {
     const [filteredPins, setFilteredPins] = useState([]);
