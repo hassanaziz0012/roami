@@ -870,8 +870,6 @@ const Detail = () => {
                                         <img
                                             src="/images/social-icon/tiktok.png"
                                             alt="Tiktok"
-                                            width={54}
-                                            height={54}
                                         />
                                     </button>
 
