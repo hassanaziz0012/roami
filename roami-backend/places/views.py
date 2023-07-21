@@ -200,8 +200,7 @@ class PlaceSearchEngine(ListAPIView):
         queryset = Location.objects.all()
         search_query = self.request.query_params.get('search')
         if search_query:
-            queryset = queryset.filter(
-                category__name__icontains=search_query) | \
+            queryset = queryset.filter(category__name__icontains=search_query) | \
                        queryset.filter(city__icontains=search_query) | \
                        queryset.filter(tags__name__icontains=search_query) | \
                        queryset.filter(country__icontains=search_query) | \

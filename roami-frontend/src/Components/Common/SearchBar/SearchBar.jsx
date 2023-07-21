@@ -35,7 +35,9 @@ const SearchBar = () => {
     }, [searchInput]);
 
     const filteredPins = data.filter((pin) =>
-        pin.place_name.toLowerCase().includes(searchInput.toLowerCase())
+        pin.place_name.toLowerCase().includes(searchInput.toLowerCase()) || 
+        pin.city.toLowerCase().includes(searchInput.toLowerCase()) ||
+        pin.country.toLowerCase().includes(searchInput.toLowerCase())
     );
 
     const containerRef = useRef(null);
