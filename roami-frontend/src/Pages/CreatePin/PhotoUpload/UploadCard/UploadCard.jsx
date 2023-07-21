@@ -23,8 +23,9 @@ const UploadCard = ({ number, setFileObj }) => {
     const blobRef = useRef(null);
     const setCroppedResult = (blob) => {
         setResultBlob(blob);
-        setFile(URL.createObjectURL(blob));
-        setFileObj(blob);
+        const file = new File([blob], "photo.png")
+        setFile(URL.createObjectURL(file));
+        setFileObj(file);
     }
 
     // modal stuff

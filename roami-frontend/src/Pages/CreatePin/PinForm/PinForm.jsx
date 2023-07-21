@@ -138197,7 +138197,7 @@ const PinForm = ({ locationLinkState, nameState, cityState, countryState, descri
                                     {isLocationMenuOpen &&
                                         locationName?.length > 2 &&
                                         filteredCountryCity?.length > 0 && (
-                                            <div className="drop_down_menu">
+                                            <div className="drop_down_menu" style={{ overflow: "scroll" }}>
                                                 {filteredCountryCity?.map((it) => (
                                                     <li
                                                         key={it.geonameid}
