@@ -52,6 +52,8 @@ const Detail = () => {
     const [youtubeUrl, setYoutubeUrl] = useState("");
     const [tiktokUrl, setTiktokUrl] = useState("");
 
+    const [allCity, setAllCity] = useState([]);
+
     const navigate = useNavigate();
 
     //handle tag
@@ -403,35 +405,16 @@ const Detail = () => {
         };
     }, []);
 
-    const allCity = [
-        { id: 1, title: "Puerto Rico" },
-        { id: 2, title: "Italy" },
-        { id: 2, title: "Italy" },
-        { id: 2, title: "Italy" },
-        { id: 2, title: "Italy" },
-        { id: 2, title: "Italy" },
-        { id: 3, title: "Moadit" },
-        { id: 4, title: "Berlin" },
-        { id: 5, title: "Seattle" },
-        { id: 1, title: "Puerto Rico22" },
-        { id: 2, title: "Italy222" },
-        { id: 3, title: "Moadit22" },
-        { id: 4, title: "Berlin22" },
-        { id: 5, title: "Seattle22" },
-        { id: 1, title: "Puerto Rico33" },
-        { id: 2, title: "Italy33" },
-        { id: 3, title: "Moadit33" },
-        { id: 3, title: "Moadit33" },
-        { id: 3, title: "Moadit33" },
-        { id: 3, title: "Moadit33" },
-        { id: 3, title: "Moadit33" },
-        { id: 3, title: "Moadit33" },
-        { id: 3, title: "Moadit33" },
-        { id: 3, title: "Moadit33" },
-        { id: 3, title: "Moadit33" },
-        { id: 4, title: "Berlin33" },
-        { id: 5, title: "Seattle33" },
-    ];
+    
+    useEffect(() => {
+        const getCities = async () => {
+            const resp = await fetch('./cities.json');
+            const data = await resp.json();
+            setAllCity(data);
+        }
+        getCities();
+    }, [])
+    
     const allCountry = [
         { id: 1, title: "California" },
         { id: 2, title: "Italy" },
@@ -441,13 +424,11 @@ const Detail = () => {
     ];
 
     const filteredCity = allCity?.filter((i) =>
-        i.title?.toLowerCase().includes(city?.toLowerCase())
+        i.name?.toLowerCase().includes(city?.toLowerCase())
     );
-    const filteredCountry = allCountry?.filter((i) =>
-        i.title?.toLowerCase().includes(home?.toLowerCase())
+    const filteredCountry = allCity?.filter((i) =>
+        i.name?.toLowerCase().includes(home?.toLowerCase())
     );
-
-
 
     return (
         <section id="profile">
@@ -567,7 +548,7 @@ const Detail = () => {
                                             type="text"
                                             name=""
                                             id=""
-                                            placeholder="Enter City Name"
+                                            placeholder="Enter living town"
                                             disabled={!isBioEdit}
                                         />
 
@@ -578,12 +559,12 @@ const Detail = () => {
                                                         key={it.id}
                                                         onClick={() => {
                                                             setIsCityMenuOpen(false);
-                                                            setCity(it.title);
+                                                            setCity(it.name);
                                                         }}
                                                     >
                                                         {" "}
                                                         <label >
-                                                            {it.title}{" "}
+                                                            {it.name}{" "}
                                                         </label>{" "}
                                                     </li>
                                                 ))}
@@ -614,7 +595,7 @@ const Detail = () => {
                                             type="text"
                                             name=""
                                             id=""
-                                            placeholder="Enter Country"
+                                            placeholder="Enter home town"
                                             disabled={!isBioEdit}
                                         />
 
@@ -623,11 +604,11 @@ const Detail = () => {
                                                 {filteredCountry?.map((it) => (
                                                     <li key={it.id} onClick={() => {
                                                         setIsHomeMenuOpen(false)
-                                                        setHome(it.title)
+                                                        setHome(it.name)
                                                     }}>
                                                         {" "}
 
-                                                        <label htmlFor={`home${it.id}`}>{it.title} </label>{" "}
+                                                        <label htmlFor={`home${it.id}`}>{it.name} </label>{" "}
                                                     </li>
                                                 ))}
 
