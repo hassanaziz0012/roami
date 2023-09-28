@@ -137,14 +137,16 @@ class UserUpdateAPIView(APIView):
     def patch(self, request, *args, **kwargs):
         username = request.data.get('username')
         profile_picture = request.data.get('profile_picture')
-
         user = get_object_or_404(User, id=request.user.id)
-        user.username = username
-        user.save(update_fields=['username'])
 
-        profile = get_object_or_404(Profile, user=user)
-        profile.profile_picture = profile_picture
-        profile.save(update_fields=['profile_picture'])
+        if username and username != '':
+            user.username = username
+            user.save(update_fields=['username'])
+
+        if profile_picture and profile_picture != 'null':
+            profile = get_object_or_404(Profile, user=user)
+            profile.profile_picture = profile_picture
+            profile.save(update_fields=['profile_picture'])
 
         serializer = GetFullUserSerializer(user, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -158,13 +160,14 @@ class ProfileUpdateAPIView(UpdateAPIView):
     queryset = Profile.objects.all()
 
     def patch(self, request, *args, **kwargs):
-
         instance = self.get_object()
-        serializer = UpdateProfileSerializer(instance=instance, data=request.data,
-                                             partial=True, context={'request': request})  # set partial=True to
-        # update a data partially
+        serializer = UpdateProfileSerializer(
+            instance=instance, 
+            data=request.data,
+            partial=True, # set partial=True to update a data partially
+            context={'request': request}
+        )
         if serializer.is_valid():
-
             serializer.save()
             interests = request.data.get('interests')
             interest_objs = Interest.objects.filter(name__in=interests)

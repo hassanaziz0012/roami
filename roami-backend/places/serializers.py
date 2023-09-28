@@ -20,11 +20,6 @@ class PlaceSerializer(TaggitSerializer, serializers.ModelSerializer):
     tags = TagListSerializerField()
     user = GetFullUserSerializer(read_only=True, default=serializers.CurrentUserDefault())
     
-    # photo_1 = serializers.SerializerMethodField('get_photo_1')
-
-    # def get_photo_1(self, place):
-        # return place.photo_1.url
-
     class Meta:
         model = Location
         fields = ['id', 'category', 'user', 'location_link', 'place_name', 'place_name_slug', 'description', 'country',

@@ -115,8 +115,7 @@ class PlaceUpdateView(RetrieveUpdateDestroyAPIView):
 
     def patch(self, request, *args, **kwargs):
         instance = self.get_object()
-        data = request.data.copy()
-        print(data)
+        data = request.data
 
         photo_1, photo_2, photo_3, photo_4, photo_5, photo_6 = (
             request.data.get('photo_1'), 
