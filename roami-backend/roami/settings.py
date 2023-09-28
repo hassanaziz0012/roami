@@ -15,6 +15,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 from django.template.context_processors import media
 
+
+load_dotenv("roami/.env", override=True)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -86,8 +89,6 @@ WSGI_APPLICATION = "roami.wsgi.application"
 AUTH_USER_MODEL = 'accounts.User'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-if os.environ.get("DATABASE_NAME") == None: # env vars aren't set
-    load_dotenv("roami/.env", override=True)
 DATABASES = {
     # "default": {
     #     "ENGINE": "django.db.backends.sqlite3",
@@ -123,8 +124,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # IMGUR API
-IMGUR_CLIENT_ID = "9ad6d6fa668cbb1"
-IMGUR_CLIENT_SECRET = "624aec4aff3e8697a92332c8cb83aa11b4583b7e"
+IMGUR_CLIENT_ID = os.environ.get("IMGUR_CLIENT_ID")
+IMGUR_CLIENT_SECRET = os.environ.get("IMGUR_CLIENT_SECRET")
 STORAGES = {
     "default": {
         "BACKEND": "roami.imgur_storage.ImgurStorage"
