@@ -18,7 +18,7 @@ class ImgurStorage(Storage):
     def exists(self, name: str) -> bool:
         return False
     
-    def url(self, name: str | None) -> str:
+    def url(self, name: str) -> str:
         return name
     
     def size(self, name: str) -> int:
