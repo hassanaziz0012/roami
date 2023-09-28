@@ -115,8 +115,6 @@ class PlaceUpdateView(RetrieveUpdateDestroyAPIView):
 
     def patch(self, request, *args, **kwargs):
         instance = self.get_object()
-        data = request.data
-
         photo_1, photo_2, photo_3, photo_4, photo_5, photo_6 = (
             request.data.get('photo_1'), 
             request.data.get('photo_2'), 
@@ -125,18 +123,37 @@ class PlaceUpdateView(RetrieveUpdateDestroyAPIView):
             request.data.get('photo_5'), 
             request.data.get('photo_6')
             )
+        data = {
+            "category": request.data.get("category"),
+            "location_link": request.data.get("location_link"),
+            "place_name": request.data.get("place_name"),
+            "place_name_slug": request.data.get("place_name_slug"),
+            "city": request.data.get("city"),
+            "country": request.data.get("country"),
+            "description": request.data.get("description"),
+            "tags": request.data.getlist("tags"),
 
-        if type(photo_1) == str and urlparse(photo_1).path == instance.photo_1.url:
-            data['photo_1'] = instance.photo_1
-        if type(photo_2) == str and urlparse(photo_2).path == instance.photo_2.url:
+            "photo_1": request.data.get("photo_1"), 
+            "photo_2": request.data.get("photo_2"), 
+            "photo_3": request.data.get("photo_3"), 
+            "photo_4": request.data.get("photo_4"), 
+            "photo_5": request.data.get("photo_5"), 
+            "photo_6": request.data.get("photo_6")
+        }
+        if type(photo_1) == str:
+            if photo_1 == instance.photo_1.url:
+                data['photo_1'] = instance.photo_1
+            else:
+                data['photo_1'] = None
+        if type(photo_2) == str and photo_2 == instance.photo_2.url:
             data['photo_2'] = instance.photo_2
-        if type(photo_3) == str and urlparse(photo_3).path == instance.photo_3.url:
+        if type(photo_3) == str and photo_3 == instance.photo_3.url:
             data['photo_3'] = instance.photo_3
-        if type(photo_4) == str and urlparse(photo_4).path == instance.photo_4.url:
+        if type(photo_4) == str and photo_4 == instance.photo_4.url:
             data['photo_4'] = instance.photo_4
-        if type(photo_5) == str and urlparse(photo_5).path == instance.photo_5.url:
+        if type(photo_5) == str and photo_5 == instance.photo_5.url:
             data['photo_5'] = instance.photo_5
-        if type(photo_6) == str and urlparse(photo_6).path == instance.photo_6.url:
+        if type(photo_6) == str and photo_6 == instance.photo_6.url:
             data['photo_6'] = instance.photo_6
 
         serializer = self.serializer_class(instance=instance, data=data,
@@ -146,8 +163,7 @@ class PlaceUpdateView(RetrieveUpdateDestroyAPIView):
         if serializer.is_valid():
             serializer.save()
             instance = self.get_object()
-            instance.tags.add(*data.get('tags').split(', '))
-            print(instance.tags.all())
+            instance.tags.add(*request.data.get('tags'))
             content = {'status': True, 'message': {"Successfully place updated"}, 'result': serializer.data}
             return Response(content, status=status.HTTP_200_OK)
         else:
