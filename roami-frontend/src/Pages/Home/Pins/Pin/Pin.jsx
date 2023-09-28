@@ -76,7 +76,7 @@ const Pin = ({ pin, setShow }) => {
                 </div>
                 <div className="heart_icon">
                     <img
-                        onClick={() => likePin() }
+                        onClick={() => likePin()}
                         src={`/images/icon/${heartToggle ? "white-heart-fill.svg" : "white-heart-outline.svg"
                             }`}
                         alt=""
