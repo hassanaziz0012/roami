@@ -19,7 +19,7 @@ let backendHost;
 if (process.env.NODE_ENV === "development") {
     backendHost = "http://127.0.0.1:8000/api/v1";
 } else {
-    backendHost = "https://api.shareyourpins.com/api/v1";
+    backendHost = "https://roami.vercel.app/api/v1";
 }
 export { backendHost };
 
