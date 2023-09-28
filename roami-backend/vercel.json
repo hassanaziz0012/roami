@@ -1,0 +1,14 @@
+{
+    "builds": [
+        {
+            "src": "roami/wsgi.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "roami/wsgi.py"
+        }
+    ]
+}
