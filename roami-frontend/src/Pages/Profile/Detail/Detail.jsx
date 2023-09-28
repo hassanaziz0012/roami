@@ -83,9 +83,8 @@ const Detail = () => {
                     console.log(data);
 
                     setUserId(data.id);
-                    // setName(data.first_name + ' ' + data.last_name);
                     setFile(data.profile.profile_picture);
-                    setName(data.first_name);
+                    setName(data.username);
                     setDescription(data.profile.bio || "");
                     setCity(data.profile.city);
                     setHome(data.profile.country);
@@ -483,11 +482,11 @@ const Detail = () => {
                                 id=""
                                 readOnly={!isNameEdit}
                             />
-                            <div className="bottom">
+                            {/* <div className="bottom">
                                 <h2>94</h2>
                                 <img src="/images/icon/blue-heart-outline.svg" alt="" />
                             </div>
-                            <span>Community Score</span>
+                            <span>Community Score</span> */}
 
                             <button className="follow_btn" onClick={logout}>Log out</button>
                         </div>
@@ -644,10 +643,6 @@ const Detail = () => {
 
                                         {isTagMenuOpen && isBioEdit && (
                                             <div className="drop_down_item">
-                                                {defaultInterests?.map(it => (
-                                                    <Tag key={it.id} item={it} handleTag={handleTag} />
-                                                ))}
-
                                                 <div className="btn_group">
                                                     <button
                                                         className="add_btn"
@@ -667,6 +662,10 @@ const Detail = () => {
                                                         Delete
                                                     </button>
                                                 </div>
+                                                
+                                                {defaultInterests?.map(it => (
+                                                    <Tag key={it.id} item={it} handleTag={handleTag} />
+                                                ))}
                                             </div>
                                         )}
                                     </div>

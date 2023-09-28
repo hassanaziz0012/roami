@@ -51,9 +51,8 @@ const Detail = ({ userId }) => {
                 res.json().then((data) => {
                     console.log(data);
 
-                    // setName(data.first_name + ' ' + data.last_name);
                     setFile(data.profile.profile_picture);
-                    setName(data.first_name);
+                    setName(data.username);
                     setDescription(data.profile.bio || "");
                     setCity(data.profile.city);
                     setHome(data.profile.country);
@@ -87,11 +86,11 @@ const Detail = ({ userId }) => {
                                 alt=""
                             />
                             <h1>{name}</h1>
-                            <div className="bottom">
+                            {/* <div className="bottom">
                                 <h2>94</h2>
                                 <img src="/images/icon/blue-heart-outline.svg" alt="" />
                             </div>
-                            <span>Community Score</span>
+                            <span>Community Score</span> */}
 
                             <button className="follow_btn">follow +</button>
                         </div>
