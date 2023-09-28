@@ -2,6 +2,21 @@ import React, { useState } from "react";
 import "./ModalDetailed.scss";
 import ImgSlider from "../ImgSlider/ImgSlider";
 import Reviews from "../Reviews/Reviews";
+import {
+    EmailShareButton, 
+    EmailIcon,
+    FacebookShareButton, 
+    TwitterShareButton, 
+    InstapaperShareButton, 
+    PinterestShareButton, 
+    RedditShareButton,
+    FacebookIcon,
+    TwitterIcon,
+    PinterestIcon,
+    InstapaperIcon,
+    RedditIcon, 
+} from "react-share";
+import { Modal } from "react-bootstrap";
 
 const ModalDetailed = ({ data, user }) => {
     const placeId = data.id;
@@ -54,8 +69,44 @@ const ModalDetailed = ({ data, user }) => {
 
     const locationName = `${city}, ${country}`;
 
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    
+
     return (
         <section id="pin_modal">
+            <Modal show={show} onHide={handleClose} centered style={{ background: "#fff" }}>
+                <Modal.Header>
+                    <h1>Share List</h1>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="d-flex align-items-center justify-content-center">
+                        <EmailShareButton url={window.location.href} subject={title} body="Check out this place!">
+                            <EmailIcon round />
+                        </EmailShareButton>
+
+                        <FacebookShareButton url={window.location.href}>
+                            <FacebookIcon round />
+                        </FacebookShareButton>
+
+                        <TwitterShareButton url={window.location.href}>
+                            <TwitterIcon round />
+                        </TwitterShareButton>
+
+                        <PinterestShareButton url={window.location.href} media={data.photo_1} description="Check out this place!">
+                            <PinterestIcon round />
+                        </PinterestShareButton>
+
+                        <InstapaperShareButton url={window.location.href} title={title} description="Check out this place!">
+                            <InstapaperIcon round />
+                        </InstapaperShareButton>
+
+                        <RedditShareButton url={window.location.href} title={title}>
+                            <RedditIcon round />
+                        </RedditShareButton>
+                    </div>
+                </Modal.Body>
+            </Modal>
             <div className="modal_container mx-auto">
                 <div className="modal_contents">
                     {/* img carousel */}
@@ -84,10 +135,10 @@ const ModalDetailed = ({ data, user }) => {
 
                             <div className="right">
                                 <div className="btn_group">
-                                    <button className="follow">share  <img src="/images/icon/share.svg" alt="" /></button>
+                                    <button className="follow" onClick={() => setShow(true)}>share  <img src="/images/icon/share.svg" alt="" /></button>
                                     <button className="get_list">
                                         <a href={locationLink}>
-                                            get list{" "}
+                                            location{" "}
                                         </a>
                                         <img src="/images/icon/location-color-sm.png" alt="" />
                                     </button>
