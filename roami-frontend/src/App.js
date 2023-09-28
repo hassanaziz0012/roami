@@ -19,7 +19,7 @@ let backendHost;
 if (process.env.NODE_ENV === "development") {
     backendHost = "http://127.0.0.1:8000/api/v1";
 } else {
-    backendHost = process.env.BACKEND_HOST;
+    backendHost = "https://roami-backend.vercel.app/api/v1";
 }
 export { backendHost };
 
