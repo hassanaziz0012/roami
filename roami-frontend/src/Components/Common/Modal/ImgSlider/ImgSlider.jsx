@@ -59,7 +59,7 @@ const ImgSlider = ({ userId, photos, placeId }) => {
                         <picture className="picture">
                             <img src={photos[0].photo_url} alt="1" className="img-fluid" />
                         </picture>
-                        <button className="like-icon" onClick={() => likePin() }>
+                        <button className="like-icon" onClick={() => likePin()}>
                             <img
                                 src={`/images/icon/${heartToggle ? "white-heart-fill.svg" : "white-heart-outline.svg"}`}
                                 alt=""
@@ -77,7 +77,7 @@ const ImgSlider = ({ userId, photos, placeId }) => {
                     </div>
                     <div className="row col-lg-6 p-0">
                         <div style={{position: "relative"}}>
-                            <button className="like-icon" onClick={() => setHeartToggle(!heartToggle)} style={{left: "92%"}}>
+                            <button className="like-icon" onClick={() => likePin()} style={{left: "92%"}}>
                                 <img
                                     src={`/images/icon/${heartToggle ? "white-heart-fill.svg" : "white-heart-outline.svg"}`}
                                     alt=""
@@ -115,7 +115,7 @@ const ImgSlider = ({ userId, photos, placeId }) => {
                     </div>
                     <div className="col-lg-6 p-0">
                         <div style={{position: "relative"}}>
-                            <button className="like-icon" onClick={() => setHeartToggle(!heartToggle)} style={{left: "90%"}}>
+                            <button className="like-icon" onClick={() => likePin()} style={{left: "90%"}}>
                                 <img
                                     src={`/images/icon/${heartToggle ? "white-heart-fill.svg" : "white-heart-outline.svg"}`}
                                     alt=""
