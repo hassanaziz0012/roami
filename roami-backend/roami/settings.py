@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import datetime
 import os
 from pathlib import Path
-
+from dotenv import load_dotenv
 from django.template.context_processors import media
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -86,20 +86,21 @@ WSGI_APPLICATION = "roami.wsgi.application"
 AUTH_USER_MODEL = 'accounts.User'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+if os.environ.get("DATABASE_NAME") == None: # env vars aren't set
+    load_dotenv("roami/.env", override=True)
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'roami',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'postgres',
-    #     'HOST': 'roami-db.cmyaw4hlw8qn.us-east-1.rds.amazonaws.com',
-    #     'PORT': '5432',
+    # "default": {
+    #     "ENGINE": "django.db.backends.sqlite3",
+    #     "NAME": BASE_DIR / "db.sqlite3",
     # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get("DATABASE_NAME"),
+        'USER': os.environ.get("DATABASE_USER"),
+        'PASSWORD': os.environ.get("DATABASE_PASSWORD"),
+        'HOST': os.environ.get("DATABASE_HOST"),
+        'PORT': os.environ.get("DATABASE_PORT"),
+    }
 
 }
 CORS_ALLOW_ALL_ORIGINS = True
@@ -120,6 +121,18 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+# IMGUR API
+IMGUR_CLIENT_ID = "9ad6d6fa668cbb1"
+IMGUR_CLIENT_SECRET = "624aec4aff3e8697a92332c8cb83aa11b4583b7e"
+STORAGES = {
+    "default": {
+        "BACKEND": "roami.imgur_storage.ImgurStorage"
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
