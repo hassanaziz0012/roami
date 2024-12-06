@@ -58,6 +58,9 @@ const Home = () => {
 
     return (
         <>
+            <p className="text-center py-2 text-danger fw-bold">
+                IMPORTANT! This is only a demo app. I just use this to show potential clients my work. So there's not a lot of data or material on this demo site.
+            </p>
             <Navbar />
             <MobileSearchBar />
             <main>
